@@ -1,0 +1,11 @@
+/build/
+*.suo
+*.pdb
+*.user
+_ReSharper.*/
+*.sdf
+bin/
+obj/
+packages/
+Debug/
+Release/

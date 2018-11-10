@@ -1,4 +1,4 @@
-﻿using Moves.Engine.Tests;
+﻿using Moves.Engine.Figures;
 using Moves.UI.ViewModels.Commands;
 using System.Collections.ObjectModel;
 using System.Windows.Input;

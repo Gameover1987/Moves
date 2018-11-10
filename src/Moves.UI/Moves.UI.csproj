@@ -71,6 +71,7 @@
     <Compile Include="ViewModels\IPlayerViewModel.cs" />
     <Compile Include="ViewModels\MovesViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Windows\Converters\ChessFigureToStringConverter.cs" />
     <Compile Include="Windows\DesignTime\DesignTimeMovesViewModel.cs" />
     <Compile Include="Windows\DesignTime\DesignTimeNewGameViewModel.cs" />
     <Compile Include="Windows\DesignTime\DesignTimePlayerViewModel.cs" />

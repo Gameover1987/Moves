@@ -1,4 +1,4 @@
-﻿namespace Moves.Engine.Tests
+﻿namespace Moves.Engine.Figures
 {
     public enum ChessFigureType
     {

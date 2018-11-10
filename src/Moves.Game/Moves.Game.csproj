@@ -80,8 +80,33 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModels\Commands\INotifyCommand.cs" />
+    <Compile Include="ViewModels\Commands\NotifyCommand.cs" />
+    <Compile Include="ViewModels\IBoardViewModel.cs" />
+    <Compile Include="ViewModels\IFigureViewModel.cs" />
+    <Compile Include="ViewModels\IMovesViewModel.cs" />
+    <Compile Include="ViewModels\INewGameViewModel.cs" />
+    <Compile Include="ViewModels\IPlayerViewModel.cs" />
+    <Compile Include="ViewModels\IPlayerViewModelFactory.cs" />
+    <Compile Include="ViewModels\MovesViewModel.cs" />
+    <Compile Include="ViewModels\NewGameViewModel.cs" />
+    <Compile Include="ViewModels\PlayerViewModel.cs" />
+    <Compile Include="ViewModels\PlayerViewModelFactory.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Windows\Converters\ChessFigureToStringConverter.cs" />
+    <Compile Include="Windows\DesignTime\DesignTimeMovesViewModel.cs" />
+    <Compile Include="Windows\DesignTime\DesignTimeNewGameViewModel.cs" />
+    <Compile Include="Windows\DesignTime\DesignTimePlayerViewModel.cs" />
+    <Compile Include="Windows\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\NewGameWindow.xaml.cs">
+      <DependentUpon>NewGameWindow.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interaction\IViewManager.cs" />
+    <Compile Include="Interaction\ViewManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -109,9 +134,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Moves.UI\Moves.UI.csproj">
-      <Project>{1C4C5FA9-03EA-434E-B258-24975929CAEE}</Project>
-      <Name>Moves.UI</Name>
+    <Page Include="Windows\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\NewGameWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Moves.Engine\Moves.Engine.csproj">
+      <Project>{72321b28-d90b-4fdd-8139-19092768bd79}</Project>
+      <Name>Moves.Engine</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

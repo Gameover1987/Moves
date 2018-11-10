@@ -1,9 +1,10 @@
 ﻿using Moves.Engine.Figures;
-using Moves.UI.ViewModels;
-using Moves.UI.ViewModels.Commands;
+using Moves.Game.ViewModels;
+using Moves.Game.ViewModels.Commands;
 using System.Collections.ObjectModel;
+using System.Linq;
 
-namespace Moves.UI.Windows.DesignTime
+namespace Moves.Game.Windows.DesignTime
 {
     internal sealed class DesignTimeNewGameViewModel : INewGameViewModel
     {
@@ -11,6 +12,25 @@ namespace Moves.UI.Windows.DesignTime
         {
             Player1 = new DesignTimePlayerViewModel { Nick = "Вячеслав" };
             Player2 = new DesignTimePlayerViewModel { Nick = "Петр" };
+
+            for (var i = 0; i < 8; i++)
+            {
+                Player1.Figures.Add(ChessFigureType.Pawn);
+                Player2.Figures.Add(ChessFigureType.Pawn);
+            }
+
+            Player1.Figures.Add(ChessFigureType.Rook);
+            Player1.Figures.Add(ChessFigureType.Knight);
+            Player1.Figures.Add(ChessFigureType.Bishop);
+            Player1.Figures.Add(ChessFigureType.Queen);
+            Player1.Figures.Add(ChessFigureType.King);
+
+            Player2.Figures.Add(ChessFigureType.Rook);
+            Player2.Figures.Add(ChessFigureType.Knight);
+            Player2.Figures.Add(ChessFigureType.Bishop);
+            Player2.Figures.Add(ChessFigureType.Queen);
+            Player2.Figures.Add(ChessFigureType.King);
+
 
             Figures = new ObservableCollection<ChessFigureType>
             {
@@ -21,6 +41,8 @@ namespace Moves.UI.Windows.DesignTime
                 ChessFigureType.Queen,
                 ChessFigureType.King,
             };
+
+            SelectedFigure = Figures.Last();
         }
 
         public IPlayerViewModel Player1 { get; private set; }
@@ -28,6 +50,8 @@ namespace Moves.UI.Windows.DesignTime
         public IPlayerViewModel Player2 { get; private set; }
 
         public ObservableCollection<ChessFigureType> Figures { get; private set; }
+
+        public ChessFigureType SelectedFigure { get; set; }
 
         public INotifyCommand GiveFigureToPlayer1Command { get; private set; }
 

@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Moves.UI.Interaction;
 using Moves.UI.ViewModels;
 using Moves.UI.Windows;
 using Unity;
@@ -25,6 +26,8 @@ namespace Moves.Game
         {
             _container.RegisterType<IPlayerViewModel, PlayerViewModel>();
             _container.RegisterSingleton<IBoardViewModel, BoardViewModel>();
+            _container.RegisterSingleton<IViewManager, ViewManager>();
+            _container.RegisterSingleton<INewGameViewModel, NewGameViewModel>();
             _container.RegisterSingleton<IMovesViewModel, MovesViewModel>();
         }
     }

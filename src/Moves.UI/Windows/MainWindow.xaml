@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Moves.UI.Windows"
+        xmlns:designTime="clr-namespace:Moves.UI.Windows.DesignTime"
         mc:Ignorable="d"
         Title="Moves" 
         WindowStartupLocation="CenterScreen"
@@ -11,7 +12,8 @@
         Height="768" 
         MinWidth="1200"
         Width="1200"
-        Background="{x:Static SystemColors.ControlBrush}">
+        Background="{x:Static SystemColors.ControlBrush}"        
+        d:DataContext="{d:DesignInstance Type={x:Type designTime:DesignTimeMovesViewModel}, IsDesignTimeCreatable=True}">
     <Grid Margin="12">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -19,7 +21,8 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Button Content="Новая игра"></Button>
+            <Button Content="Новая игра"
+                    Command="{Binding NewGameCommand}"/>
         </StackPanel>
 
         <Grid Grid.Row="1" Margin="0,12,0,0">

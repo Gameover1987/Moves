@@ -47,6 +47,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interaction\IViewManager.cs" />
     <Compile Include="Interaction\ViewManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -61,12 +62,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ViewModels\Commands\INotifyCommand.cs" />
+    <Compile Include="ViewModels\Commands\NotifyCommand.cs" />
     <Compile Include="ViewModels\IBoardViewModel.cs" />
     <Compile Include="ViewModels\IFigureViewModel.cs" />
     <Compile Include="ViewModels\IMovesViewModel.cs" />
+    <Compile Include="ViewModels\INewGameViewModel.cs" />
     <Compile Include="ViewModels\IPlayerViewModel.cs" />
     <Compile Include="ViewModels\MovesViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Windows\DesignTime\DesignTimeMovesViewModel.cs" />
+    <Compile Include="Windows\DesignTime\DesignTimeNewGameViewModel.cs" />
+    <Compile Include="Windows\DesignTime\DesignTimePlayerViewModel.cs" />
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>

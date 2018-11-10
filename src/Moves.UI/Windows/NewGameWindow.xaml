@@ -44,6 +44,9 @@
         
         <Separator Grid.Row="1" Margin="-12,12,-12,12"></Separator>
 
+        <Button Grid.Row="2" HorizontalAlignment="Left"
+                Content="Стандартный набор фигур"></Button>
+        
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Content="OK" Width="75" Height="23"/>
             <Button Content="Отмена" Margin="6,0,0,0" Width="75" Height="23"/>

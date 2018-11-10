@@ -28,5 +28,10 @@ namespace Moves.Engine.Figures
 
             return figure.ToString().Equals(ToString());
         }
+
+        public override int GetHashCode()
+        {
+            return ToString().GetHashCode();
+        }
     }
 }

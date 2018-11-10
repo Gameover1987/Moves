@@ -44,6 +44,7 @@
     <Compile Include="Board\BoardHitTestResult.cs" />
     <Compile Include="Board\GlobalConstants.cs" />
     <Compile Include="Figures\Bishop.cs" />
+    <Compile Include="Figures\ChessFigureType.cs" />
     <Compile Include="Figures\FigureBase.cs" />
     <Compile Include="Figures\King.cs" />
     <Compile Include="Figures\Knight.cs" />

@@ -50,26 +50,26 @@ namespace Moves.Engine.Tests
             }
         }
 
-        public static IFigure CreateFirgure(this ChessFigure chessFigure, string position)
+        public static IFigure CreateFirgure(this ChessFigureType chessFigure, string position)
         {
             switch (chessFigure)
             {
-                case ChessFigure.Pawn:
+                case ChessFigureType.Pawn:
                     return new Pawn(position);
 
-                case ChessFigure.Rook:
+                case ChessFigureType.Rook:
                     return new Rook(position);
 
-                case ChessFigure.Knight:
+                case ChessFigureType.Knight:
                     return new Knight(position);
 
-                case ChessFigure.Bishop:
+                case ChessFigureType.Bishop:
                     return new Bishop(position);
 
-                case ChessFigure.King:
+                case ChessFigureType.King:
                     return new King(position);
 
-                case ChessFigure.Queen:
+                case ChessFigureType.Queen:
                     return new Queen(position);
 
                 default:

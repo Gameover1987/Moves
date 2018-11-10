@@ -1,6 +1,6 @@
 ﻿namespace Moves.Engine.Tests
 {
-    public enum ChessFigure
+    public enum ChessFigureType
     {
         Pawn,
         Rook,

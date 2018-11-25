@@ -3,6 +3,7 @@ using Moves.Engine.Figures;
 using Moves.Game.ViewModels;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Moves.Game.Tests
@@ -18,7 +19,10 @@ namespace Moves.Game.Tests
             var mockPlayerViewModelFactory = new Mock<IPlayerViewModelFactory>();
             mockPlayerViewModelFactory
                 .Setup(x => x.CreatePlayer())
-                .Returns(new PlayerViewModel());
+                .Returns(() =>
+                {
+                    return new PlayerViewModel();
+                });
 
             _playerViewModelFactory = mockPlayerViewModelFactory.Object;
         }
@@ -88,17 +92,31 @@ namespace Moves.Game.Tests
                 ChessFigureType.Pawn,
                 ChessFigureType.Pawn,
                 ChessFigureType.Rook,
+                ChessFigureType.Rook,
+                ChessFigureType.Knight,
                 ChessFigureType.Knight,
                 ChessFigureType.Bishop,
-                ChessFigureType.Queen,
-                ChessFigureType.King
+                ChessFigureType.Bishop,
+                ChessFigureType.King,
+                ChessFigureType.Queen
             };
 
             // Then
-            var player1ActualFigures = newGameViewModel.Player1.Figures.OrderBy(x => x);
+            var player1ActualFigures = newGameViewModel.Player1.Figures.OrderBy(x => x).ToArray();
             Assert.IsTrue(player1ActualFigures.SequenceEqual(expectedFigureSet));
             var player2ActualFigures = newGameViewModel.Player2.Figures.OrderBy(x => x);
             Assert.IsTrue(player2ActualFigures.SequenceEqual(expectedFigureSet));
+        }
+
+        public void Check(ChessFigureType[] figures1, ChessFigureType[] figures2)
+        {
+            if (figures1.Length != figures2.Length)
+                return ;
+
+            for (int i = 0; i < figures1.Count(); i++)
+            {
+                Assert.IsTrue(figures1[i] == figures2[i]);
+            }
         }
 
     }

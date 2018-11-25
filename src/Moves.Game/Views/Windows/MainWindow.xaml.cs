@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Moves.Game.Windows
+namespace Moves.Game.Views.Windows
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

@@ -1,4 +1,5 @@
-﻿using Moves.Game.ViewModels.Commands;
+﻿using Moves.Game.ViewModels.Board;
+using Moves.Game.ViewModels.Commands;
 
 namespace Moves.Game.ViewModels
 {

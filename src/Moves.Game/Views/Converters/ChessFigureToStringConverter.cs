@@ -1,9 +1,9 @@
-﻿using Moves.Engine.Figures;
-using System;
+﻿using System;
 using System.Globalization;
 using System.Windows.Data;
+using Moves.Engine.Figures;
 
-namespace Moves.Game.Windows.Converters
+namespace Moves.Game.Views.Converters
 {
     public class ChessFigureToStringConverter : IValueConverter
     {

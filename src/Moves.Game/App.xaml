@@ -2,11 +2,19 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Moves.Game"
-             xmlns:converters="clr-namespace:Moves.Game.Windows.Converters"
+             xmlns:viewModels="clr-namespace:Moves.Game.ViewModels"
+             xmlns:converters="clr-namespace:Moves.Game.Views.Converters"
              Startup="App_OnStartup">
     <Application.Resources>
         <ResourceDictionary>
             <converters:ChessFigureToStringConverter x:Key="ChessFigureToStringConverter"/>
+
+            <SolidColorBrush x:Key="BlackCellBrush" Color="#B58863" />
+            <SolidColorBrush x:Key="WhiteCellBrush" Color="#F0D9B5" />
+
+            <DataTemplate x:Key="ChessFigureStringTemlate" DataType="{x:Type viewModels:FigureViewModel}">
+                <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=Self}, Path=DataContext, Converter={StaticResource ChessFigureToStringConverter} }"/>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

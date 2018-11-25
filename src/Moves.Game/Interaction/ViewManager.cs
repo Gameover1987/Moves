@@ -1,6 +1,6 @@
 ﻿using Moves.Game.ViewModels;
-using Moves.Game.Windows;
 using System.Windows;
+using NewGameWindow = Moves.Game.Views.Windows.NewGameWindow;
 
 namespace Moves.Game.Interaction
 {
@@ -16,6 +16,7 @@ namespace Moves.Game.Interaction
 
         public INewGameViewModel NewGame()
         {
+            _newGameViewModel.Initialize();
             var newGameWindow = new NewGameWindow();
             newGameWindow.DataContext = _newGameViewModel;
             newGameWindow.Owner = Application.Current.MainWindow;

@@ -1,8 +1,9 @@
 ﻿using System.Windows;
 using Moves.Game.Interaction;
 using Moves.Game.ViewModels;
-using Moves.Game.Windows;
+using Moves.Game.ViewModels.Board;
 using Unity;
+using MainWindow = Moves.Game.Views.Windows.MainWindow;
 
 namespace Moves.Game
 {
@@ -29,6 +30,7 @@ namespace Moves.Game
             _container.RegisterSingleton<IViewManager, ViewManager>();
             _container.RegisterSingleton<INewGameViewModel, NewGameViewModel>();
             _container.RegisterSingleton<IPlayerViewModelFactory, PlayerViewModelFactory>();
+            _container.RegisterSingleton<IChessBoardCellFactory, ChessBoardCellFactory>();
             _container.RegisterSingleton<IMovesViewModel, MovesViewModel>();
         }
     }

@@ -1,7 +1,8 @@
 ﻿using Moves.Game.ViewModels;
+using Moves.Game.ViewModels.Board;
 using Moves.Game.ViewModels.Commands;
 
-namespace Moves.Game.Windows.DesignTime
+namespace Moves.Game.Views.DesignTime
 {
     internal sealed class DesignTimeMovesViewModel : IMovesViewModel
     {

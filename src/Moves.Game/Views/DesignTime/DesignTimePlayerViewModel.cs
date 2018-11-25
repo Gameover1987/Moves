@@ -1,9 +1,8 @@
-﻿using Moves.Engine.Figures;
+﻿using System.Collections.ObjectModel;
+using Moves.Engine.Figures;
 using Moves.Game.ViewModels;
-using System;
-using System.Collections.ObjectModel;
 
-namespace Moves.Game.Windows.DesignTime
+namespace Moves.Game.Views.DesignTime
 {
     internal sealed class DesignTimePlayerViewModel : IPlayerViewModel
     {

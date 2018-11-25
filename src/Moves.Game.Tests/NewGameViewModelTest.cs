@@ -38,6 +38,7 @@ namespace Moves.Game.Tests
 
             // When
             var newGameViewModel = new NewGameViewModel(_playerViewModelFactory);
+            newGameViewModel.Initialize();
 
             // Then
             var actualChessFigures = newGameViewModel.Figures.ToArray();
@@ -57,6 +58,7 @@ namespace Moves.Game.Tests
         {
             // Given
             var newGameViewModel = new NewGameViewModel(_playerViewModelFactory);
+            newGameViewModel.Initialize();
             newGameViewModel.SelectedFigure = expectedChessFigure;
 
             // When
@@ -77,6 +79,7 @@ namespace Moves.Game.Tests
         {
             // Given
             var newGameViewModel = new NewGameViewModel(_playerViewModelFactory);
+            newGameViewModel.Initialize();
 
             // When
             newGameViewModel.GiveDefaultFigureSetCommand.Execute();
@@ -107,17 +110,5 @@ namespace Moves.Game.Tests
             var player2ActualFigures = newGameViewModel.Player2.Figures.OrderBy(x => x);
             Assert.IsTrue(player2ActualFigures.SequenceEqual(expectedFigureSet));
         }
-
-        public void Check(ChessFigureType[] figures1, ChessFigureType[] figures2)
-        {
-            if (figures1.Length != figures2.Length)
-                return ;
-
-            for (int i = 0; i < figures1.Count(); i++)
-            {
-                Assert.IsTrue(figures1[i] == figures2[i]);
-            }
-        }
-
     }
 }

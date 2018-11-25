@@ -1,10 +1,10 @@
-﻿using Moves.Engine.Figures;
+﻿using System.Collections.ObjectModel;
+using System.Linq;
+using Moves.Engine.Figures;
 using Moves.Game.ViewModels;
 using Moves.Game.ViewModels.Commands;
-using System.Collections.ObjectModel;
-using System.Linq;
 
-namespace Moves.Game.Windows.DesignTime
+namespace Moves.Game.Views.DesignTime
 {
     internal sealed class DesignTimeNewGameViewModel : INewGameViewModel
     {
@@ -60,5 +60,9 @@ namespace Moves.Game.Windows.DesignTime
         public INotifyCommand GiveDefaultFigureSetCommand { get; private set; }
 
         public INotifyCommand OkCommand { get; private set; }
+        public void Initialize()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

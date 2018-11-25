@@ -16,5 +16,7 @@ namespace Moves.Game.ViewModels
         INotifyCommand GiveFigureToPlayer2Command { get; }
         INotifyCommand GiveDefaultFigureSetCommand { get; }
         INotifyCommand OkCommand { get; }
+
+        void Initialize();
     }
 }

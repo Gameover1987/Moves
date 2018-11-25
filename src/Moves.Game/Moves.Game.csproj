@@ -80,9 +80,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModels\Board\BoardViewModel.cs" />
+    <Compile Include="ViewModels\Board\ChessBoardCellViewModel.cs" />
+    <Compile Include="ViewModels\Board\IChessBoardCellFactory.cs" />
+    <Compile Include="ViewModels\Board\IChessBoardCellViewModel.cs" />
     <Compile Include="ViewModels\Commands\INotifyCommand.cs" />
     <Compile Include="ViewModels\Commands\NotifyCommand.cs" />
-    <Compile Include="ViewModels\IBoardViewModel.cs" />
+    <Compile Include="ViewModels\Board\IBoardViewModel.cs" />
     <Compile Include="ViewModels\IFigureViewModel.cs" />
     <Compile Include="ViewModels\IMovesViewModel.cs" />
     <Compile Include="ViewModels\INewGameViewModel.cs" />
@@ -93,14 +97,19 @@
     <Compile Include="ViewModels\PlayerViewModel.cs" />
     <Compile Include="ViewModels\PlayerViewModelFactory.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
-    <Compile Include="Windows\Converters\ChessFigureToStringConverter.cs" />
-    <Compile Include="Windows\DesignTime\DesignTimeMovesViewModel.cs" />
-    <Compile Include="Windows\DesignTime\DesignTimeNewGameViewModel.cs" />
-    <Compile Include="Windows\DesignTime\DesignTimePlayerViewModel.cs" />
-    <Compile Include="Windows\MainWindow.xaml.cs">
+    <Compile Include="Views\Controls\ChessBoardControl.xaml.cs">
+      <DependentUpon>ChessBoardControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Converters\ChessFigureToStringConverter.cs" />
+    <Compile Include="Views\DesignTime\DesignTimeBoardViewModel.cs" />
+    <Compile Include="Views\DesignTime\DesignTimeMovesViewModel.cs" />
+    <Compile Include="Views\DesignTime\DesignTimeNewGameViewModel.cs" />
+    <Compile Include="Views\DesignTime\DesignTimePlayerViewModel.cs" />
+    <Compile Include="Views\Windows\IWindow.cs" />
+    <Compile Include="Views\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\NewGameWindow.xaml.cs">
+    <Compile Include="Views\Windows\NewGameWindow.xaml.cs">
       <DependentUpon>NewGameWindow.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -134,11 +143,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Windows\MainWindow.xaml">
+    <Page Include="Views\Controls\ChessBoardControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\NewGameWindow.xaml">
+    <Page Include="Views\Windows\NewGameWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

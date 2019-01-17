@@ -4,6 +4,12 @@ namespace Moves.Engine.Figures
 {
     public abstract class FigureBase : IFigure
     {
+        protected bool _isPositionChanged;
+
+        protected Position _position;
+
+        protected Position[] _moves;
+
         protected FigureBase(string position)
         {
             Position = new Position(position);
@@ -11,9 +17,28 @@ namespace Moves.Engine.Figures
 
         public FigureColor Color { get; set; }
 
-        public Position Position { get; set; }
+        public Position Position
+        {
+            get { return _position; }
+            set
+            {
+                if (_position == value)
+                    return;
+                _position = value;
+                _isPositionChanged = true;
+            }
+        }
 
-        public abstract Position[] GetMoves(IBoard board);
+        public Position[] GetMoves(IBoard board)
+        {
+            if (_isPositionChanged)
+                _moves = GetMovesImpl(board);
+
+            _isPositionChanged = false;
+            return _moves;
+        }
+
+        protected abstract Position[] GetMovesImpl(IBoard board);
 
         public override string ToString()
         {

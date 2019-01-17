@@ -11,7 +11,7 @@ namespace Moves.Engine.Figures
         {
         }
 
-        public override Position[] GetMoves(IBoard board)
+        protected override Position[] GetMovesImpl(IBoard board)
         {
             var allMoves = new List<Position>();
             for (int i = 1; i < board.Width; i++)

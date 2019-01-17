@@ -11,7 +11,7 @@ namespace Moves.Engine.Figures
         {
         }
 
-        public override Position[] GetMoves(IBoard board)
+        protected override Position[] GetMovesImpl(IBoard board)
         {
             var moves = new List<Position>();
             if (Color == FigureColor.White)

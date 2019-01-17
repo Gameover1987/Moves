@@ -19,18 +19,25 @@ namespace Moves.Game.Views.DesignTime
                 Player2.Figures.Add(ChessFigureType.Pawn);
             }
 
+
+            Player1.Figures.Add(ChessFigureType.Rook);
             Player1.Figures.Add(ChessFigureType.Rook);
             Player1.Figures.Add(ChessFigureType.Knight);
+            Player1.Figures.Add(ChessFigureType.Knight);
+            Player1.Figures.Add(ChessFigureType.Bishop);
             Player1.Figures.Add(ChessFigureType.Bishop);
             Player1.Figures.Add(ChessFigureType.Queen);
             Player1.Figures.Add(ChessFigureType.King);
 
             Player2.Figures.Add(ChessFigureType.Rook);
+            Player2.Figures.Add(ChessFigureType.Rook);
             Player2.Figures.Add(ChessFigureType.Knight);
+            Player2.Figures.Add(ChessFigureType.Knight);
+            Player2.Figures.Add(ChessFigureType.Bishop);
             Player2.Figures.Add(ChessFigureType.Bishop);
             Player2.Figures.Add(ChessFigureType.Queen);
             Player2.Figures.Add(ChessFigureType.King);
-
+            
 
             Figures = new ObservableCollection<ChessFigureType>
             {

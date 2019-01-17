@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace Moves.Game.ViewModels.Commands
@@ -12,25 +14,26 @@ namespace Moves.Game.ViewModels.Commands
         private readonly Action<Exception> _exceptionAction;
         private event EventHandler _canExecuteChanged;
 
-        public NotifyCommand(Action action)
-            : this(obj => action(), null)
+        public NotifyCommand(Action execute)
+            : this(obj => execute(), null, DefaultExceptionHandler)
         {
-        }
-
-        public NotifyCommand(Action action, Func<bool> canExecute)
-            :this(obj => action(), obj => canExecute())
-        {           
         }
 
         public NotifyCommand(Action<object> execute)
-            : this(execute, null)
+            : this(execute, null, DefaultExceptionHandler)
         {
         }
-
+        
         public NotifyCommand(Action<object> execute, Func<object, bool> canExecute)
+            : this(execute, canExecute, DefaultExceptionHandler)
+        {
+        }
+        
+        public NotifyCommand(Action<object> execute, Func<object, bool> canExecute, Action<Exception> exceptionAction)
         {
             _execute = execute;
             _canExecute = canExecute;
+            _exceptionAction = exceptionAction ?? DefaultExceptionHandler;
         }
 
         public event EventHandler CanExecuteChanged
@@ -112,6 +115,25 @@ namespace Moves.Game.ViewModels.Commands
                 else
                     Application.Current?.Dispatcher.InvokeAsync(() => _canExecuteChanged(this, EventArgs.Empty), DispatcherPriority.Normal);
             }
+        }
+
+        public static EventHandler<ExceptionEventArgs> CommandException;
+
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        private static void DefaultExceptionHandler(Exception ex)
+        {
+            if (!Application.Current?.Dispatcher.CheckAccess() == true)
+            {
+                Application.Current?.Dispatcher.InvokeAsync(() => DefaultExceptionHandler(ex), DispatcherPriority.Normal);
+                return;
+            }
+
+            Exception initialException = ex;
+
+            while (initialException.InnerException != null)
+                initialException = initialException.InnerException;
+
+            CommandException?.Invoke(null, new ExceptionEventArgs(ex));
         }
 
         public static void NotifyCanExecuteChangedForAll()

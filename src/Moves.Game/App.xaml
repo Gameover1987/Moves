@@ -12,8 +12,11 @@
             <SolidColorBrush x:Key="BlackCellBrush" Color="#B58863" />
             <SolidColorBrush x:Key="WhiteCellBrush" Color="#F0D9B5" />
 
+            <SolidColorBrush x:Key="WindowBackground" Color="#312E2B"/>
+
             <DataTemplate x:Key="ChessFigureStringTemlate" DataType="{x:Type viewModels:FigureViewModel}">
-                <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=Self}, Path=DataContext, Converter={StaticResource ChessFigureToStringConverter} }"/>
+                <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=Self}, Path=DataContext, Converter={StaticResource ChessFigureToStringConverter} }"
+                           Margin="3"/>
             </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>

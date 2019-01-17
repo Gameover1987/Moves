@@ -9,6 +9,10 @@ namespace Moves.Game.Views.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            var isChessFigure = value is ChessFigureType;
+            if (!isChessFigure)
+                return Binding.DoNothing;
+
             var chessFigure = (ChessFigureType)value;
             switch (chessFigure)
             {

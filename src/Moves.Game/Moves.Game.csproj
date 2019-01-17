@@ -84,6 +84,7 @@
     <Compile Include="ViewModels\Board\ChessBoardCellViewModel.cs" />
     <Compile Include="ViewModels\Board\IChessBoardCellFactory.cs" />
     <Compile Include="ViewModels\Board\IChessBoardCellViewModel.cs" />
+    <Compile Include="ViewModels\Commands\ExceptionEventArgs.cs" />
     <Compile Include="ViewModels\Commands\INotifyCommand.cs" />
     <Compile Include="ViewModels\Commands\NotifyCommand.cs" />
     <Compile Include="ViewModels\Board\IBoardViewModel.cs" />
@@ -99,6 +100,9 @@
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\Controls\ChessBoardControl.xaml.cs">
       <DependentUpon>ChessBoardControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\PlayerControl.xaml.cs">
+      <DependentUpon>PlayerControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Converters\ChessFigureToStringConverter.cs" />
     <Compile Include="Views\DesignTime\DesignTimeBoardViewModel.cs" />
@@ -144,6 +148,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\Controls\ChessBoardControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\PlayerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

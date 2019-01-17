@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="Moves.Game.Views.Controls.PkayerControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Moves.Game.Views.Controls"
+             xmlns:designTime="clr-namespace:Moves.Game.Views.DesignTime"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="100"
+             d:DataContext="{d:DesignInstance d:Type={x:Type designTime:DesignTimePlayerViewModel}}">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="{Binding Nick}" FontSize="18" Foreground="White"/>
+
+        <ItemsControl Grid.Row="1" Margin="0,6,0,0" Foreground="White"
+                      ItemsSource="{Binding Figures}"
+                      ItemTemplate="{StaticResource ChessFigureStringTemlate}">
+        </ItemsControl>
+    </Grid>
+</UserControl>

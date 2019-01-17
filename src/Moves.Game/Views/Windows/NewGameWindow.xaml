@@ -6,9 +6,11 @@
         xmlns:designTime="clr-namespace:Moves.Game.Views.DesignTime"
         mc:Ignorable="d"
         WindowStartupLocation="CenterOwner"
-        Background="{x:Static SystemColors.ControlBrush}"
+        Background="{StaticResource WindowBackground}"
         Title="Новая игра"
         SizeToContent="Width"
+        MinHeight="565"
+        Height="565"
         d:DataContext="{d:DesignInstance Type={x:Type designTime:DesignTimeNewGameViewModel}, IsDesignTimeCreatable=True}">    
     <Grid Margin="12">
        <Grid.RowDefinitions>
@@ -36,10 +38,10 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Column="0" Text="Игрок 1" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Column="0" Text="Игрок 1" HorizontalAlignment="Center" Foreground="White"/>
                 <TextBox Grid.Column="1" Text="{Binding Player1.Nick}" Margin="6,0,0,0"/>
             </Grid>            
-            <ListBox Grid.Row="1" Grid.Column="0" Margin="0,6,0,0"
+            <ListBox Grid.Row="1" Grid.Column="0" Margin="0,6,0,0" Background="Transparent" Foreground="White"
                      ItemsSource="{Binding Player1.Figures}"
                      ItemTemplate="{StaticResource ChessFigureStringTemlate}">
             </ListBox>
@@ -47,8 +49,8 @@
             <Button Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Height="100" Width="50" Content="&lt;" FontSize="30" Margin="6"
                     Command="{Binding GiveFigureToPlayer1Command}"/>
 
-            <TextBlock Grid.Row="0" Grid.Column="2" Text="Фигуры" HorizontalAlignment="Center"/>
-            <ListBox x:Name="figuresListBox" Grid.Row="1" Grid.Column="2" Margin="0,6,0,0"
+            <TextBlock Grid.Row="0" Grid.Column="2" Text="Фигуры" HorizontalAlignment="Center" Foreground="White"/>
+            <ListBox x:Name="figuresListBox" Grid.Row="1" Grid.Column="2" Margin="0,6,0,0" Background="Transparent" Foreground="White"
                      HorizontalContentAlignment="Stretch"
                      ItemsSource="{Binding Figures}"
                      SelectedItem="{Binding SelectedFigure}"
@@ -64,10 +66,10 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Column="0" Text="Игрок 1" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Column="0" Text="Игрок 1" HorizontalAlignment="Center" Foreground="White"/>
                 <TextBox Grid.Column="1" Text="{Binding Player2.Nick}" Margin="6,0,0,0"/>
             </Grid>
-            <ListBox Grid.Row="1" Grid.Column="4" Margin="0,6,0,0"
+            <ListBox Grid.Row="1" Grid.Column="4" Margin="0,6,0,0"  Background="Transparent" Foreground="White"
                      ItemsSource="{Binding Player2.Figures}"
                      ItemTemplate="{StaticResource ChessFigureStringTemlate}">
             </ListBox>

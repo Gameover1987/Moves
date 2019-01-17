@@ -12,7 +12,7 @@
         Height="768" 
         MinWidth="1200"
         Width="1200"
-        Background="{x:Static SystemColors.ControlBrush}"        
+        Background="{StaticResource WindowBackground}"        
         d:DataContext="{d:DesignInstance Type={x:Type designTime:DesignTimeMovesViewModel}, IsDesignTimeCreatable=True}">
     <Grid Margin="12">
         <Grid.RowDefinitions>
@@ -32,38 +32,15 @@
                 <ColumnDefinition Width="0.25*"/>
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Row="0" Grid.Column="0"
-                  DataContext="{Binding Player1}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <TextBlock Grid.Row="0" Text="{Binding Nick}" FontSize="18"/>
-                
-                <ListBox Grid.Row="1" Margin="0,6,0,0"
-                         ItemsSource="{Binding Figures}"
-                         ItemTemplate="{StaticResource ChessFigureStringTemlate}">
-                </ListBox>
-            </Grid>
+            <controls:PkayerControl Grid.Row="0" Grid.Column="0"
+                                    DataContext="{Binding Player1}"/>
 
             <Grid Grid.Column="1" Margin="12,0,12,0" DataContext="{Binding Board}">
                 <controls:ChessBoardControl />
             </Grid>
 
-            <Grid Grid.Row="0" Grid.Column="2"
-                  DataContext="{Binding Player2}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <TextBlock Grid.Row="0" Text="{Binding Nick}" FontSize="18"/>
-
-                <ListBox Grid.Row="1" Margin="0,6,0,0"
-                         ItemsSource="{Binding Figures}"
-                         ItemTemplate="{StaticResource ChessFigureStringTemlate}"></ListBox>
-            </Grid>
+            <controls:PkayerControl Grid.Row="0" Grid.Column="2"
+                                    DataContext="{Binding Player2}"/>
         </Grid>
     </Grid>
 </Window>

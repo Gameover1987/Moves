@@ -49,7 +49,10 @@ namespace Moves.Game.ViewModels
         {
             Player1 = _playerViewModelFactory.CreatePlayer();
             Player2 = _playerViewModelFactory.CreatePlayer();
-            
+
+            Player1.Nick = "Игрок 1";
+            Player2.Nick = "Игрок 2";
+
             _figures = new ObservableCollection<ChessFigureType>(Enum.GetValues(typeof(ChessFigureType)).Cast<ChessFigureType>());
         }
 

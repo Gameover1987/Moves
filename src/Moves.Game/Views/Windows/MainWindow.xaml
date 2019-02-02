@@ -20,10 +20,12 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
             <Button Content="Новая игра"
                     Command="{Binding NewGameCommand}"/>
         </StackPanel>
+
+        <TextBlock Text="{Binding GameInfo}" HorizontalAlignment="Center" Foreground="White" FontSize="18"/>
 
         <Grid Grid.Row="1" Margin="0,12,0,0">
             <Grid.ColumnDefinitions>
@@ -32,14 +34,14 @@
                 <ColumnDefinition Width="0.25*"/>
             </Grid.ColumnDefinitions>
 
-            <controls:PkayerControl Grid.Row="0" Grid.Column="0"
+            <controls:PlayerControl Grid.Row="0" Grid.Column="0"
                                     DataContext="{Binding Player1}"/>
 
             <Grid Grid.Column="1" Margin="12,0,12,0" DataContext="{Binding Board}">
-                <controls:ChessBoardControl />
+                <controls:ChessBoardControl/>
             </Grid>
 
-            <controls:PkayerControl Grid.Row="0" Grid.Column="2"
+            <controls:PlayerControl Grid.Row="0" Grid.Column="2"
                                     DataContext="{Binding Player2}"/>
         </Grid>
     </Grid>

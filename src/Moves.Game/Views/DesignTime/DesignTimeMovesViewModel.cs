@@ -13,5 +13,10 @@ namespace Moves.Game.Views.DesignTime
         public IBoardViewModel Board { get; private set; }
 
         public INotifyCommand NewGameCommand { get; private set; }
+
+        public string GameInfo
+        {
+            get { return "Инфа об игре"; }
+        }
     }
 }

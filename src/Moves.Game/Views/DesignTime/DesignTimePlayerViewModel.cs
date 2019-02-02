@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using Moves.Engine.Figures;
 using Moves.Game.ViewModels;
 
@@ -14,5 +15,7 @@ namespace Moves.Game.Views.DesignTime
         public string Nick { get; set; }
 
         public ObservableCollection<ChessFigureType> Figures { get; private set; }
+        public event EventHandler<FigureSelectedEventArgs> FigureSelected;
+        public ChessFigureType? SelectedFigure { get; set; }
     }
 }

@@ -46,6 +46,7 @@
     <Compile Include="Figures\Bishop.cs" />
     <Compile Include="Figures\ChessFigureType.cs" />
     <Compile Include="Figures\FigureBase.cs" />
+    <Compile Include="Figures\FigureExtensions.cs" />
     <Compile Include="Figures\King.cs" />
     <Compile Include="Figures\Knight.cs" />
     <Compile Include="Figures\Pawn.cs" />

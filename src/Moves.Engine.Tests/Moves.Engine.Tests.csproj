@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="BishopTest.cs" />
     <Compile Include="BoardTest.cs" />
+    <Compile Include="FigureExtensionsTest.cs" />
     <Compile Include="FigureTestBase.cs" />
     <Compile Include="KingTest.cs" />
     <Compile Include="KnightTest.cs" />

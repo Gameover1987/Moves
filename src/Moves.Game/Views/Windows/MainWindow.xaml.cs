@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Moves.Game.Views.DesignTime;
 
 namespace Moves.Game.Views.Windows
 {
@@ -10,6 +11,8 @@ namespace Moves.Game.Views.Windows
         public MainWindow()
         {
             InitializeComponent();
+
+            //var aaa = new DesignTimeBoardViewModel();
         }
     }
 }

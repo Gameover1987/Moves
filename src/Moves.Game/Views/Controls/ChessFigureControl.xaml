@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="Moves.Game.Views.Controls.ChessFigureControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Moves.Game.Views.Controls"
+             xmlns:figures="clr-namespace:Moves.Engine.Figures;assembly=Moves.Engine"
+             xmlns:designTime="clr-namespace:Moves.Game.Views.DesignTime"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type={x:Type designTime:DesignTimeChessBoardCellViewModel}, IsDesignTimeCreatable=False}">
+    <Grid>
+        <Path x:Name="figurePath" Stretch="Fill" StrokeThickness="2">
+            <Path.Style>
+                <Style TargetType="{x:Type Path}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Figure.Color}" Value="{x:Static figures:FigureColor.White}">
+                            <Setter Property="Fill" Value="White"/>
+                            <Setter Property="Stroke" Value="Black"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Figure.Color}" Value="{x:Static figures:FigureColor.Black}">
+                            <Setter Property="Fill" Value="Black"/>
+                            <Setter Property="Stroke" Value="Black"/>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Figure, Converter={StaticResource ChessFigureToTypeConverter}}" Value="{x:Type figures:Pawn}">
+                            <Setter Property="Data" Value="{StaticResource PawnGeomerty}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Figure, Converter={StaticResource ChessFigureToTypeConverter}}" Value="{x:Type figures:Rook}">
+                            <Setter Property="Data" Value="{StaticResource RookGeometry}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Figure, Converter={StaticResource ChessFigureToTypeConverter}}" Value="{x:Type figures:Knight}">
+                            <Setter Property="Data" Value="{StaticResource KnightGeometry}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Figure, Converter={StaticResource ChessFigureToTypeConverter}}" Value="{x:Type figures:Bishop}">
+                            <Setter Property="Data" Value="{StaticResource BishopGeometry}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Figure, Converter={StaticResource ChessFigureToTypeConverter}}" Value="{x:Type figures:Queen}">
+                            <Setter Property="Data" Value="{StaticResource QueenGeometry}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Figure, Converter={StaticResource ChessFigureToTypeConverter}}" Value="{x:Type figures:King}">
+                            <Setter Property="Data" Value="{StaticResource KingGeometry}"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Path.Style>
+        </Path>
+    </Grid>
+</UserControl>

@@ -14,6 +14,19 @@ namespace Moves.Game.Views.Converters
                 return Binding.DoNothing;
 
             var chessFigure = (ChessFigureType)value;
+            return chessFigure.Localize();
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public static class ChessFigureTypeExtensions
+    {
+        public static string Localize(this ChessFigureType chessFigure)
+        {
             switch (chessFigure)
             {
                 case ChessFigureType.Pawn:
@@ -37,11 +50,6 @@ namespace Moves.Game.Views.Converters
                 default:
                     throw new NotSupportedException("Неизвестный тип фигурыы");
             }
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
         }
     }
 }

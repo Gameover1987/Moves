@@ -88,7 +88,6 @@
     <Compile Include="ViewModels\Commands\INotifyCommand.cs" />
     <Compile Include="ViewModels\Commands\NotifyCommand.cs" />
     <Compile Include="ViewModels\Board\IBoardViewModel.cs" />
-    <Compile Include="ViewModels\IFigureViewModel.cs" />
     <Compile Include="ViewModels\IMovesViewModel.cs" />
     <Compile Include="ViewModels\INewGameViewModel.cs" />
     <Compile Include="ViewModels\IPlayerViewModel.cs" />
@@ -101,11 +100,16 @@
     <Compile Include="Views\Controls\ChessBoardControl.xaml.cs">
       <DependentUpon>ChessBoardControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Controls\ChessFigureControl.xaml.cs">
+      <DependentUpon>ChessFigureControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Controls\PlayerControl.xaml.cs">
       <DependentUpon>PlayerControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Converters\ChessFigureToStringConverter.cs" />
+    <Compile Include="Views\Converters\ChessFigureToTypeConverter.cs" />
     <Compile Include="Views\DesignTime\DesignTimeBoardViewModel.cs" />
+    <Compile Include="Views\DesignTime\DesignTimeChessBoardCellViewModel.cs" />
     <Compile Include="Views\DesignTime\DesignTimeMovesViewModel.cs" />
     <Compile Include="Views\DesignTime\DesignTimeNewGameViewModel.cs" />
     <Compile Include="Views\DesignTime\DesignTimePlayerViewModel.cs" />
@@ -148,6 +152,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\Controls\ChessBoardControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\ChessFigureControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

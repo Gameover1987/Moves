@@ -10,5 +10,7 @@ namespace Moves.Game.ViewModels
         IBoardViewModel Board { get; }
 
         INotifyCommand NewGameCommand { get;  }
+
+        string GameInfo { get; }
     }
 }

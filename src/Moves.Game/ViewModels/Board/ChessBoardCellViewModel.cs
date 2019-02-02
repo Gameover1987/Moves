@@ -7,8 +7,9 @@ namespace Moves.Game.ViewModels.Board
         private readonly int _row;
         private readonly int _column;
         private readonly FigureColor _color;
+        private CellState _state;
 
-        private IFigureViewModel _figure;
+        private IFigure _figure;
 
         public ChessBoardCellViewModel(int row, int column, FigureColor color)
         {
@@ -19,13 +20,34 @@ namespace Moves.Game.ViewModels.Board
 
         public int Row => _row;
 
-        public  int Column => _column;
+        public int Column => _column;
 
         public FigureColor Color => _color;
 
-        public IFigureViewModel Figure
+        public IFigure Figure
         {
-            get { return _figure;}
-            set { SetProperty(() => _figure, value); } }
+            get { return _figure; }
+            set { SetProperty(() => _figure, value); }
+        }
+
+        public CellState State
+        {
+            get { return _state; }
+            set
+            {
+                if (_state == value)
+                    return;
+                _state = value;
+                OnPropertyChanged(() => State);
+            }
+        }
+
+        public override string ToString()
+        {
+            if (Figure != null)
+                return Figure.ToString();
+
+            return new Position(Column, Row).ToString();
+        }
     }
 }

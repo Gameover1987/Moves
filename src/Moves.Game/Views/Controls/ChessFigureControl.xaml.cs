@@ -12,17 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Moves.Engine.Figures;
-using Moves.Game.ViewModels;
 
 namespace Moves.Game.Views.Controls
 {
     /// <summary>
-    /// Interaction logic for PlayerControl.xaml
+    /// Interaction logic for ChessFigureControl.xaml
     /// </summary>
-    public partial class PlayerControl : UserControl
+    public partial class ChessFigureControl : UserControl
     {
-        public PlayerControl()
+        public ChessFigureControl()
         {
             InitializeComponent();
         }

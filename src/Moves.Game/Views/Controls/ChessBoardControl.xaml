@@ -6,9 +6,11 @@
              xmlns:designTime="clr-namespace:Moves.Game.Views.DesignTime"
              xmlns:board="clr-namespace:Moves.Game.ViewModels.Board"
              xmlns:figures="clr-namespace:Moves.Engine.Figures;assembly=Moves.Engine"
+             xmlns:controls="clr-namespace:Moves.Game.Views.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="550" d:DesignWidth="550"
-             d:DataContext="{d:DesignInstance Type={x:Type designTime:DesignTimeBoardViewModel}, IsDesignTimeCreatable=True}">
+             d:DataContext="{d:DesignInstance Type={x:Type designTime:DesignTimeBoardViewModel}, IsDesignTimeCreatable=True}"
+             DataContextChanged="ChessBoardControl_OnDataContextChanged">
     <UserControl.Resources>
         <ResourceDictionary>
             <Style TargetType="{x:Type TextBlock}">
@@ -51,16 +53,21 @@
                  ItemsSource="{Binding Cells}">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid Columns="8" Rows="8" IsItemsHost="True"></UniformGrid>
+                    <UniformGrid Columns="8" Rows="8" IsItemsHost="True"/>
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
             <ListBox.ItemContainerStyle>
                 <Style TargetType="{x:Type ListBoxItem}">
+                    <EventSetter Event="MouseEnter" Handler="OnCellMouseEnter"/>
+                    <EventSetter Event="MouseMove" Handler="OnCellMouseMove"/>
+                    <EventSetter Event="MouseLeave" Handler="OnCellMouseLeave"/>
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                <ContentControl Content="{TemplateBinding Content}"
-                                                ContentTemplate="{TemplateBinding ContentTemplate}"/>
+                                <Border Background="Transparent">
+                                    <ContentControl Content="{TemplateBinding Content}"
+                                                    ContentTemplate="{TemplateBinding ContentTemplate}"/>
+                                </Border>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -81,6 +88,8 @@
                                 </Style.Triggers>
                             </Style>
                         </Border.Style>
+
+                        <controls:ChessFigureControl DataContext="{Binding}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>

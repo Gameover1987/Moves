@@ -44,7 +44,7 @@ namespace Moves.Engine.Figures
 
         public override string ToString()
         {
-            return string.Format("{0} {1} {2}", this.GetType().Name, Position.PositionStr, Color);
+            return string.Format("{0} {1} {2}", Color, GetType().Name, Position.PositionStr);
         }
 
         public override bool Equals(object obj)

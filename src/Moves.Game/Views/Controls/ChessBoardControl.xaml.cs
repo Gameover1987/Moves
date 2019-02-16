@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using Moves.Engine.Figures;
 using Moves.Game.ViewModels.Board;
@@ -9,7 +8,7 @@ namespace Moves.Game.Views.Controls
     /// <summary>
     /// Interaction logic for ChessBoardControl.xaml
     /// </summary>
-    public partial class ChessBoardControl : UserControl
+    public partial class ChessBoardControl
     {
         private IBoardViewModel _boardViewModel;
 

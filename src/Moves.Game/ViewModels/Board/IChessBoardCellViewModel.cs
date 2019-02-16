@@ -21,4 +21,12 @@ namespace Moves.Game.ViewModels.Board
 
         CellState State { get; set; }
     }
+
+    public static class ChessBoardCellViewModelExtensions
+    {
+        public static Position ToPostion(this IChessBoardCellViewModel cell)
+        {
+            return new Position(cell.Column, cell.Row);
+        }
+    }
 }

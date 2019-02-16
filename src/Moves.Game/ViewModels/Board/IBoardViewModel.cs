@@ -7,8 +7,12 @@ namespace Moves.Game.ViewModels.Board
     {
         IChessBoardCellViewModel[] Cells { get; }
 
+        FigureColor CurrentColor { get; set; }
+
         ChessFigureType? AddingFigure { get; set; }
 
-        void PerformHitTest(string positionStr);
+        BoardHitTestResult PerformHitTest(string positionStr);
+
+        void SetFigure(Position position);
     }
 }

@@ -26,7 +26,6 @@ namespace Moves.Game.ViewModels
             newGame.GiveDefaultFigureSetCommand.Execute();
             Player1 = newGame.Player1;
             Player2 = newGame.Player2;
-
         }
 
         public IPlayerViewModel Player1
@@ -119,6 +118,7 @@ namespace Moves.Game.ViewModels
             }
 
             Board.AddingFigure = player.SelectedFigure;
+            Board.CurrentColor = player.Color;
 
             OnPropertyChanged(() => GameInfo);
         }

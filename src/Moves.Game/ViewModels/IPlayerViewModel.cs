@@ -18,6 +18,8 @@ namespace Moves.Game.ViewModels
     {
         string Nick { get; set; }
 
+        FigureColor Color { get; set; }
+
         ObservableCollection<ChessFigureType> Figures { get; }
 
         event EventHandler<FigureSelectedEventArgs> FigureSelected;

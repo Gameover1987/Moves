@@ -11,6 +11,8 @@ namespace Moves.Engine.Figures
         {
         }
 
+        public override ChessFigureType Type => ChessFigureType.Bishop;
+
         protected override Position[] GetMovesImpl(IBoard board)
         {
             var allMoves = new List<Position>();

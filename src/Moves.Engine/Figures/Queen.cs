@@ -11,6 +11,8 @@ namespace Moves.Engine.Figures
         {
         }
 
+        public override ChessFigureType Type => ChessFigureType.Queen;
+
         protected override Position[] GetMovesImpl(IBoard board)
         {
             var verticalRookMoves = new List<Position>();
@@ -36,7 +38,7 @@ namespace Moves.Engine.Figures
                 bishopMoves.Add(new Position(Position.Column + i, Position.Row + i));
             }
 
-            var allQueenMoves = rookMoves.Concat(bishopMoves);
+            var allQueenMoves = rookMoves.Concat(bishopMoves).ToList();
 
             var posibleMoves = allQueenMoves
                 .Where(x => x.Column > 0 && x.Column <= board.Width && x.Row > 0 && x.Row <= board.Height)

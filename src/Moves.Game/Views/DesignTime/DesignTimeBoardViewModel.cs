@@ -61,10 +61,15 @@ namespace Moves.Game.Views.DesignTime
         }
 
         public IChessBoardCellViewModel[] Cells => _cells;
+        public FigureColor CurrentColor { get; set; }
 
         public ChessFigureType? AddingFigure { get; set; }
+        public BoardHitTestResult PerformHitTest(string positionStr)
+        {
+            throw new System.NotImplementedException();
+        }
 
-        public void PerformHitTest(string positionStr)
+        public void SetFigure(Position position)
         {
             throw new System.NotImplementedException();
         }

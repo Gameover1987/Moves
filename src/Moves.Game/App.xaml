@@ -1,31 +1,707 @@
 ﻿<Application x:Class="Moves.Game.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Moves.Game"
-             xmlns:viewModels="clr-namespace:Moves.Game.ViewModels"
              xmlns:converters="clr-namespace:Moves.Game.Views.Converters"
              xmlns:figures="clr-namespace:Moves.Engine.Figures;assembly=Moves.Engine"
              Startup="App_OnStartup">
     <Application.Resources>
         <ResourceDictionary>
+            <DrawingGroup x:Key="WhitePawn">
+                <DrawingGroup>
+                    <DrawingGroup.ClipGeometry>
+                        <RectangleGeometry Rect="0,0,45,45" />
+                    </DrawingGroup.ClipGeometry>
+                    <GeometryDrawing Brush="#FFFFFFFF">
+                        <GeometryDrawing.Pen>
+                            <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Miter" />
+                        </GeometryDrawing.Pen>
+                        <GeometryDrawing.Geometry>
+                            <PathGeometry FillRule="Nonzero" Figures="M22,9C19.79,9 18,10.79 18,13 18,13.89 18.29,14.71 18.78,15.38 16.83,16.5 15.5,18.59 15.5,21 15.5,23.03 16.44,24.84 17.91,26.03 14.91,27.09 10.5,31.58 10.5,39.5L33.5,39.5C33.5,31.58 29.09,27.09 26.09,26.03 27.56,24.84 28.5,23.03 28.5,21 28.5,18.59 27.17,16.5 25.22,15.38 25.71,14.71 26,13.89 26,13 26,10.79 24.21,9 22,9z" />
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                </DrawingGroup>
+            </DrawingGroup>
+
+            <DrawingGroup x:Key="WhiteRook">
+                <DrawingGroup>
+                    <DrawingGroup.ClipGeometry>
+                        <RectangleGeometry Rect="0,0,45,45" />
+                    </DrawingGroup.ClipGeometry>
+                    <DrawingGroup Opacity="1">
+                        <GeometryDrawing Brush="#FFFFFFFF">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M9,39L36,39 36,36 9,36 9,39z" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Brush="#FFFFFFFF">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M12,36L12,32 33,32 33,36 12,36z" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Brush="#FFFFFFFF">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M11,14L11,9 15,9 15,11 20,11 20,9 25,9 25,11 30,11 30,9 34,9 34,14" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Brush="#FFFFFFFF">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M34,14L31,17 14,17 11,14" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Brush="#FFFFFFFF">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M31,17L31,29.5 14,29.5 14,17" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Brush="#FFFFFFFF">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M31,29.5L32.5,32 12.5,32 14,29.5" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing>
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Miter" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M11,14L34,14" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                </DrawingGroup>
+            </DrawingGroup>
+
+            <DrawingGroup x:Key="WhiteKnight">
+                <DrawingGroup>
+                    <DrawingGroup.ClipGeometry>
+                        <RectangleGeometry Rect="0,0,45,45" />
+                    </DrawingGroup.ClipGeometry>
+                    <DrawingGroup Opacity="1">
+                        <GeometryDrawing Brush="#FFFFFFFF">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M22,10C32.5,11,38.5,18,38,39L15,39C15,30,25,32.5,23,18" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Brush="#FFFFFFFF">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M24,18C24.38,20.91 18.45,25.37 16,27 13,29 13.18,31.34 11,31 9.958,30.06 12.41,27.96 11,28 10,28 11.19,29.23 10,30 9,30 5.997,31 6,26 6,24 12,14 12,14 12,14 13.89,12.1 14,10.5 13.27,9.506 13.5,8.5 13.5,7.5 14.5,6.5 16.5,10 16.5,10L18.5,10C18.5,10 19.28,8.008 21,7 22,7 22,10 22,10" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Brush="#FF000000">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M9.5,25.5A0.5,0.5,0,1,1,8.5,25.5A0.5,0.5,0,1,1,9.5,25.5z" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <DrawingGroup Transform="0.866,0.5,-0.5,0.866,9.693,-5.173">
+                            <GeometryDrawing Brush="#FF000000">
+                                <GeometryDrawing.Pen>
+                                    <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                                </GeometryDrawing.Pen>
+                                <GeometryDrawing.Geometry>
+                                    <PathGeometry FillRule="EvenOdd" Figures="M15,15.5A0.5,1.5,0,1,1,14,15.5A0.5,1.5,0,1,1,15,15.5z" />
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                        </DrawingGroup>
+                    </DrawingGroup>
+                </DrawingGroup>
+            </DrawingGroup>
+
+            <DrawingGroup x:Key="WhiteBishop">
+                <DrawingGroup>
+                    <DrawingGroup.ClipGeometry>
+                        <RectangleGeometry Rect="0,0,45,45" />
+                    </DrawingGroup.ClipGeometry>
+                    <DrawingGroup Opacity="1">
+                        <DrawingGroup Opacity="1">
+                            <GeometryDrawing Brush="#FFFFFFFF">
+                                <GeometryDrawing.Pen>
+                                    <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Round" />
+                                </GeometryDrawing.Pen>
+                                <GeometryDrawing.Geometry>
+                                    <PathGeometry FillRule="EvenOdd" Figures="M9,36C12.39,35.03 19.11,36.43 22.5,34 25.89,36.43 32.61,35.03 36,36 36,36 37.65,36.54 39,38 38.32,38.97 37.35,38.99 36,38.5 32.61,37.53 25.89,38.96 22.5,37.5 19.11,38.96 12.39,37.53 9,38.5 7.646,38.99 6.677,38.97 6,38 7.354,36.06 9,36 9,36z" />
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                            <GeometryDrawing Brush="#FFFFFFFF">
+                                <GeometryDrawing.Pen>
+                                    <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Round" />
+                                </GeometryDrawing.Pen>
+                                <GeometryDrawing.Geometry>
+                                    <PathGeometry FillRule="EvenOdd" Figures="M15,32C17.5,34.5 27.5,34.5 30,32 30.5,30.5 30,30 30,30 30,27.5 27.5,26 27.5,26 33,24.5 33.5,14.5 22.5,10.5 11.5,14.5 12,24.5 17.5,26 17.5,26 15,27.5 15,30 15,30 14.5,30.5 15,32z" />
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                            <GeometryDrawing Brush="#FFFFFFFF">
+                                <GeometryDrawing.Pen>
+                                    <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Round" />
+                                </GeometryDrawing.Pen>
+                                <GeometryDrawing.Geometry>
+                                    <PathGeometry FillRule="EvenOdd" Figures="M25,8A2.5,2.5,0,1,1,20,8A2.5,2.5,0,1,1,25,8z" />
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                        </DrawingGroup>
+                        <GeometryDrawing>
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Miter" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M17.5,26L27.5,26 M15,30L30,30 M22.5,15.5L22.5,20.5 M20,18L25,18" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                </DrawingGroup>
+            </DrawingGroup>
+
+            <DrawingGroup x:Key="WhiteQueen">
+                <DrawingGroup>
+                    <DrawingGroup.ClipGeometry>
+                        <RectangleGeometry Rect="0,0,45,45" />
+                    </DrawingGroup.ClipGeometry>
+                    <DrawingGroup Opacity="1">
+                        <DrawingGroup Transform="1,0,0,1,-1,-1">
+                            <GeometryDrawing Brush="#FFFFFFFF">
+                                <GeometryDrawing.Pen>
+                                    <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                                </GeometryDrawing.Pen>
+                                <GeometryDrawing.Geometry>
+                                    <PathGeometry FillRule="EvenOdd" Figures="M9,13A2,2,0,1,1,5,13A2,2,0,1,1,9,13z" />
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                        </DrawingGroup>
+                        <DrawingGroup Transform="1,0,0,1,15.5,-5.5">
+                            <GeometryDrawing Brush="#FFFFFFFF">
+                                <GeometryDrawing.Pen>
+                                    <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                                </GeometryDrawing.Pen>
+                                <GeometryDrawing.Geometry>
+                                    <PathGeometry FillRule="EvenOdd" Figures="M9,13A2,2,0,1,1,5,13A2,2,0,1,1,9,13z" />
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                        </DrawingGroup>
+                        <DrawingGroup Transform="1,0,0,1,32,-1">
+                            <GeometryDrawing Brush="#FFFFFFFF">
+                                <GeometryDrawing.Pen>
+                                    <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                                </GeometryDrawing.Pen>
+                                <GeometryDrawing.Geometry>
+                                    <PathGeometry FillRule="EvenOdd" Figures="M9,13A2,2,0,1,1,5,13A2,2,0,1,1,9,13z" />
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                        </DrawingGroup>
+                        <DrawingGroup Transform="1,0,0,1,7,-4.5">
+                            <GeometryDrawing Brush="#FFFFFFFF">
+                                <GeometryDrawing.Pen>
+                                    <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                                </GeometryDrawing.Pen>
+                                <GeometryDrawing.Geometry>
+                                    <PathGeometry FillRule="EvenOdd" Figures="M9,13A2,2,0,1,1,5,13A2,2,0,1,1,9,13z" />
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                        </DrawingGroup>
+                        <DrawingGroup Transform="1,0,0,1,24,-4">
+                            <GeometryDrawing Brush="#FFFFFFFF">
+                                <GeometryDrawing.Pen>
+                                    <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                                </GeometryDrawing.Pen>
+                                <GeometryDrawing.Geometry>
+                                    <PathGeometry FillRule="EvenOdd" Figures="M9,13A2,2,0,1,1,5,13A2,2,0,1,1,9,13z" />
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                        </DrawingGroup>
+                        <GeometryDrawing Brush="#FFFFFFFF">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M9,26C17.5,24.5,30,24.5,36,26L38,14 31,25 31,11 25.5,24.5 22.5,9.5 19.5,24.5 14,10.5 14,25 7,14 9,26z" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Brush="#FFFFFFFF">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M9,26C9,28 10.5,28 11.5,30 12.5,31.5 12.5,31 12,33.5 10.5,34.5 10.5,36 10.5,36 9,37.5 11,38.5 11,38.5 17.5,39.5 27.5,39.5 34,38.5 34,38.5 35.5,37.5 34,36 34,36 34.5,34.5 33,33.5 32.5,31 32.5,31.5 33.5,30 34.5,28 36,28 36,26 27.5,24.5 17.5,24.5 9,26z" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing>
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M11.5,30C15,29,30,29,33.5,30" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing>
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M12,33.5C18,32.5,27,32.5,33,33.5" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                </DrawingGroup>
+            </DrawingGroup>
+
+            <DrawingGroup x:Key="WhiteKing">
+                <DrawingGroup>
+                    <DrawingGroup.ClipGeometry>
+                        <RectangleGeometry Rect="0,0,45,45" />
+                    </DrawingGroup.ClipGeometry>
+                    <DrawingGroup Opacity="1">
+                        <GeometryDrawing>
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Miter" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M22.5,11.63L22.5,6" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing>
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Miter" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M20,8L25,8" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Brush="#FFFFFFFF">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M22.5,25C22.5,25 27,17.5 25.5,14.5 25.5,14.5 24.5,12 22.5,12 20.5,12 19.5,14.5 19.5,14.5 18,17.5 22.5,25 22.5,25" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Brush="#FFFFFFFF">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M11.5,37C17,40.5,27,40.5,32.5,37L32.5,30C32.5,30 41.5,25.5 38.5,19.5 34.5,13 25,16 22.5,23.5L22.5,27 22.5,23.5C19,16 9.5,13 6.5,19.5 3.5,25.5 11.5,29.5 11.5,29.5L11.5,37z" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing>
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M11.5,30C17,27,27,27,32.5,30" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing>
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M11.5,33.5C17,30.5,27,30.5,32.5,33.5" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing>
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M11.5,37C17,34,27,34,32.5,37" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                </DrawingGroup>
+            </DrawingGroup>
+
+            <DrawingGroup x:Key="BlackPawn">
+                <DrawingGroup x:Name="DrawingLayer">
+                    <DrawingGroup.ClipGeometry>
+                        <RectangleGeometry Rect="0,0,45,45" />
+                    </DrawingGroup.ClipGeometry>
+                    <GeometryDrawing Brush="#FF000000">
+                        <GeometryDrawing.Pen>
+                            <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Miter" />
+                        </GeometryDrawing.Pen>
+                        <GeometryDrawing.Geometry>
+                            <PathGeometry FillRule="Nonzero" Figures="M22,9C19.79,9 18,10.79 18,13 18,13.89 18.29,14.71 18.78,15.38 16.83,16.5 15.5,18.59 15.5,21 15.5,23.03 16.44,24.84 17.91,26.03 14.91,27.09 10.5,31.58 10.5,39.5L33.5,39.5C33.5,31.58 29.09,27.09 26.09,26.03 27.56,24.84 28.5,23.03 28.5,21 28.5,18.59 27.17,16.5 25.22,15.38 25.71,14.71 26,13.89 26,13 26,10.79 24.21,9 22,9z" />
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                </DrawingGroup>
+            </DrawingGroup>
+
+            <DrawingGroup x:Key="BlackRook">
+                <DrawingGroup x:Name="DrawingLayer" >
+                    <DrawingGroup.ClipGeometry>
+                        <RectangleGeometry Rect="0,0,45,45" />
+                    </DrawingGroup.ClipGeometry>
+                    <DrawingGroup Opacity="1">
+                        <GeometryDrawing Brush="#FF000000">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M9,39L36,39 36,36 9,36 9,39z" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Brush="#FF000000">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M12.5,32L14,29.5 31,29.5 32.5,32 12.5,32z" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Brush="#FF000000">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M12,36L12,32 33,32 33,36 12,36z" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Brush="#FF000000">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M14,29.5L14,16.5 31,16.5 31,29.5 14,29.5z" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Brush="#FF000000">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M14,16.5L11,14 34,14 31,16.5 14,16.5z" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Brush="#FF000000">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M11,14L11,9 15,9 15,11 20,11 20,9 25,9 25,11 30,11 30,9 34,9 34,14 11,14z" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing>
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FFFFFFFF" Thickness="1" StartLineCap="Round" EndLineCap="Round" LineJoin="Miter" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M12,35.5L33,35.5 33,35.5" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing>
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FFFFFFFF" Thickness="1" StartLineCap="Round" EndLineCap="Round" LineJoin="Miter" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M13,31.5L32,31.5" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing>
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FFFFFFFF" Thickness="1" StartLineCap="Round" EndLineCap="Round" LineJoin="Miter" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M14,29.5L31,29.5" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing>
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FFFFFFFF" Thickness="1" StartLineCap="Round" EndLineCap="Round" LineJoin="Miter" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M14,16.5L31,16.5" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing>
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FFFFFFFF" Thickness="1" StartLineCap="Round" EndLineCap="Round" LineJoin="Miter" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M11,14L34,14" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                </DrawingGroup>
+            </DrawingGroup>
+
+            <DrawingGroup x:Key="BlackKnight">
+                <DrawingGroup>
+                    <DrawingGroup.ClipGeometry>
+                        <RectangleGeometry Rect="0,0,45,45" />
+                    </DrawingGroup.ClipGeometry>
+                    <DrawingGroup Opacity="1">
+                        <GeometryDrawing Brush="#FF000000">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M22,10C32.5,11,38.5,18,38,39L15,39C15,30,25,32.5,23,18" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Brush="#FF000000">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M24,18C24.38,20.91 18.45,25.37 16,27 13,29 13.18,31.34 11,31 9.958,30.06 12.41,27.96 11,28 10,28 11.19,29.23 10,30 9,30 5.997,31 6,26 6,24 12,14 12,14 12,14 13.89,12.1 14,10.5 13.27,9.506 13.5,8.5 13.5,7.5 14.5,6.5 16.5,10 16.5,10L18.5,10C18.5,10 19.28,8.008 21,7 22,7 22,10 22,10" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Brush="#FFFFFFFF">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FFFFFFFF" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M9.5,25.5A0.5,0.5,0,1,1,8.5,25.5A0.5,0.5,0,1,1,9.5,25.5z" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <DrawingGroup Transform="0.866,0.5,-0.5,0.866,9.693,-5.173">
+                            <GeometryDrawing Brush="#FFFFFFFF">
+                                <GeometryDrawing.Pen>
+                                    <Pen Brush="#FFFFFFFF" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                                </GeometryDrawing.Pen>
+                                <GeometryDrawing.Geometry>
+                                    <PathGeometry FillRule="EvenOdd" Figures="M15,15.5A0.5,1.5,0,1,1,14,15.5A0.5,1.5,0,1,1,15,15.5z" />
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                        </DrawingGroup>
+                        <GeometryDrawing Brush="#FFFFFFFF">
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M24.55,10.4L24.1,11.85 24.6,12C27.75,13 30.25,14.49 32.5,18.75 34.75,23.01 35.75,29.06 35.25,39L35.2,39.5 37.45,39.5 37.5,39C38,28.94 36.62,22.15 34.25,17.66 31.88,13.17 28.46,11.02 25.06,10.5L24.55,10.4z" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                </DrawingGroup>
+            </DrawingGroup>
+
+            <DrawingGroup x:Key="BlackBishop">
+                <DrawingGroup>
+                    <DrawingGroup.ClipGeometry>
+                        <RectangleGeometry Rect="0,0,45,45" />
+                    </DrawingGroup.ClipGeometry>
+                    <DrawingGroup Opacity="1">
+                        <DrawingGroup Opacity="1">
+                            <GeometryDrawing Brush="#FF000000">
+                                <GeometryDrawing.Pen>
+                                    <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Round" />
+                                </GeometryDrawing.Pen>
+                                <GeometryDrawing.Geometry>
+                                    <PathGeometry FillRule="EvenOdd" Figures="M9,36C12.39,35.03 19.11,36.43 22.5,34 25.89,36.43 32.61,35.03 36,36 36,36 37.65,36.54 39,38 38.32,38.97 37.35,38.99 36,38.5 32.61,37.53 25.89,38.96 22.5,37.5 19.11,38.96 12.39,37.53 9,38.5 7.646,38.99 6.677,38.97 6,38 7.354,36.06 9,36 9,36z" />
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                            <GeometryDrawing Brush="#FF000000">
+                                <GeometryDrawing.Pen>
+                                    <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Round" />
+                                </GeometryDrawing.Pen>
+                                <GeometryDrawing.Geometry>
+                                    <PathGeometry FillRule="EvenOdd" Figures="M15,32C17.5,34.5 27.5,34.5 30,32 30.5,30.5 30,30 30,30 30,27.5 27.5,26 27.5,26 33,24.5 33.5,14.5 22.5,10.5 11.5,14.5 12,24.5 17.5,26 17.5,26 15,27.5 15,30 15,30 14.5,30.5 15,32z" />
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                            <GeometryDrawing Brush="#FF000000">
+                                <GeometryDrawing.Pen>
+                                    <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Round" />
+                                </GeometryDrawing.Pen>
+                                <GeometryDrawing.Geometry>
+                                    <PathGeometry FillRule="EvenOdd" Figures="M25,8A2.5,2.5,0,1,1,20,8A2.5,2.5,0,1,1,25,8z" />
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                        </DrawingGroup>
+                        <GeometryDrawing>
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FFFFFFFF" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Miter" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M17.5,26L27.5,26 M15,30L30,30 M22.5,15.5L22.5,20.5 M20,18L25,18" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                </DrawingGroup>
+            </DrawingGroup>
+
+            <DrawingGroup x:Key="BlackQueen">
+                <DrawingGroup x:Name="DrawingLayer">
+                    <DrawingGroup.ClipGeometry>
+                        <RectangleGeometry Rect="0,0,45,45" />
+                    </DrawingGroup.ClipGeometry>
+                    <DrawingGroup Opacity="1">
+                        <DrawingGroup Opacity="1">
+                            <GeometryDrawing Brush="#FF000000">
+                                <GeometryDrawing.Geometry>
+                                    <EllipseGeometry RadiusX="2.75" RadiusY="2.75" Center="6,12" />
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                            <GeometryDrawing Brush="#FF000000">
+                                <GeometryDrawing.Geometry>
+                                    <EllipseGeometry RadiusX="2.75" RadiusY="2.75" Center="14,9" />
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                            <GeometryDrawing Brush="#FF000000">
+                                <GeometryDrawing.Geometry>
+                                    <EllipseGeometry RadiusX="2.75" RadiusY="2.75" Center="22.5,8" />
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                            <GeometryDrawing Brush="#FF000000">
+                                <GeometryDrawing.Geometry>
+                                    <EllipseGeometry RadiusX="2.75" RadiusY="2.75" Center="31,9" />
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                            <GeometryDrawing Brush="#FF000000">
+                                <GeometryDrawing.Geometry>
+                                    <EllipseGeometry RadiusX="2.75" RadiusY="2.75" Center="39,12" />
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                        </DrawingGroup>
+                        <GeometryDrawing Brush="#FF000000">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M9,26C17.5,24.5,30,24.5,36,26L38.5,13.5 31,25 30.7,10.9 25.5,24.5 22.5,10 19.5,24.5 14.3,10.9 14,25 6.5,13.5 9,26z" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Brush="#FF000000">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M9,26C9,28 10.5,28 11.5,30 12.5,31.5 12.5,31 12,33.5 10.5,34.5 10.5,36 10.5,36 9,37.5 11,38.5 11,38.5 17.5,39.5 27.5,39.5 34,38.5 34,38.5 35.5,37.5 34,36 34,36 34.5,34.5 33,33.5 32.5,31 32.5,31.5 33.5,30 34.5,28 36,28 36,26 27.5,24.5 17.5,24.5 9,26z" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing>
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M11,38.5A35,35,1,0,0,34,38.5" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing>
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FFFFFFFF" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M11,29A35,35,1,0,1,34,29" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing>
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FFFFFFFF" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M12.5,31.5L32.5,31.5" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing>
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FFFFFFFF" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M11.5,34.5A35,35,1,0,0,33.5,34.5" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing>
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FFFFFFFF" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M10.5,37.5A35,35,1,0,0,34.5,37.5" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                </DrawingGroup>
+            </DrawingGroup>
+
+            <DrawingGroup x:Key="BlackKing">
+                <DrawingGroup>
+                    <DrawingGroup.ClipGeometry>
+                        <RectangleGeometry Rect="0,0,45,45" />
+                    </DrawingGroup.ClipGeometry>
+                    <DrawingGroup Opacity="1">
+                        <GeometryDrawing x:Name="path6570">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Miter" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M22.5,11.63L22.5,6" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Brush="#FF000000">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M22.5,25C22.5,25 27,17.5 25.5,14.5 25.5,14.5 24.5,12 22.5,12 20.5,12 19.5,14.5 19.5,14.5 18,17.5 22.5,25 22.5,25" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Brush="#FF000000">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M11.5,37C17,40.5,27,40.5,32.5,37L32.5,30C32.5,30 41.5,25.5 38.5,19.5 34.5,13 25,16 22.5,23.5L22.5,27 22.5,23.5C19,16 9.5,13 6.5,19.5 3.5,25.5 11.5,29.5 11.5,29.5L11.5,37z" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing>
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FF000000" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Miter" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M20,8L25,8" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing>
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FFFFFFFF" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M32,29.5C32,29.5 40.5,25.5 38.03,19.85 34.15,14 25,18 22.5,24.5L22.51,26.6 22.5,24.5C20,18 9.906,14 6.997,19.85 4.5,25.5 11.85,28.85 11.85,28.85" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing>
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FFFFFFFF" Thickness="1.5" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                            </GeometryDrawing.Pen>
+                            <GeometryDrawing.Geometry>
+                                <PathGeometry FillRule="EvenOdd" Figures="M11.5,30C17,27,27,27,32.5,30 M11.5,33.5C17,30.5,27,30.5,32.5,33.5 M11.5,37C17,34,27,34,32.5,37" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                </DrawingGroup>
+            </DrawingGroup>
+
             <converters:ChessFigureToStringConverter x:Key="ChessFigureToStringConverter"/>
-            <converters:ChessFigureToTypeConverter x:Key="ChessFigureToTypeConverter"/>
 
             <SolidColorBrush x:Key="BlackCellBrush" Color="#B58863" />
             <SolidColorBrush x:Key="WhiteCellBrush" Color="#F0D9B5" />
-            <SolidColorBrush x:Key="WindowBackground" Color="#312E2B"/>
+            <SolidColorBrush x:Key="WindowBackground" Color="#312E2B" />
 
             <DataTemplate x:Key="ChessFigureStringTemlate" DataType="{x:Type figures:IFigure}">
                 <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=Self}, Path=DataContext, Converter={StaticResource ChessFigureToStringConverter} }"
                            Margin="3"/>
             </DataTemplate>
-
-            <PathGeometry x:Key="PawnGeomerty">F1 M 24.9375,60.1667C 24.9375,53.0302 31.6667,53.8333 32.4475,42.75L 30.0833,42.75L 30.0833,41.1667L 33.6406,41.1667C 34.3703,37.9648 35.2292,33.8736 35.2292,28.5L 29.2917,28.5L 34.6833,25.8149C 33.3325,24.8043 32.4583,23.1917 32.4583,21.375C 32.4583,18.3144 34.9394,15.8333 38,15.8333C 41.0606,15.8333 43.5417,18.3144 43.5417,21.375C 43.5417,23.1917 42.6674,24.8043 41.3167,25.8149L 46.7083,28.5L 40.7708,28.5C 40.7708,33.8736 41.5941,37.9648 42.2676,41.1667L 45.9167,41.1667L 45.9167,42.75L 43.4298,42.75C 44.3333,53.8333 51.0625,53.0302 51.0625,60.1667L 24.9375,60.1667 Z</PathGeometry>
-            <PathGeometry x:Key="RookGeometry">F1 M 28.5,15.8333L 32.4583,15.8333L 33.25,20.5833L 34.8333,20.5833L 34.8333,15.8333L 41.1667,15.8333L 41.1667,20.5833L 42.75,20.5833L 44.3333,15.8333L 47.5,15.8333C 47.5,20.0556 47.5,24.2778 44.3333,26.3889C 43.9489,26.6452 43.9136,26.4746 43.4471,26.6686L 44.3333,41.1667L 48.6875,41.1667L 48.6875,42.75L 45.9167,43.1458C 45.9167,47.8958 51.0625,53.8333 51.0625,60.1667L 24.9375,60.1667C 24.9375,53.8333 30.0833,47.8958 30.0833,43.1458L 27.3125,42.75L 27.3125,41.1667L 31.6667,41.1667L 32.5529,26.6686C 32.0864,26.4745 32.0511,26.6452 31.6667,26.3889C 28.5,24.2778 28.5,20.0556 28.5,15.8333 Z </PathGeometry>
-            <PathGeometry x:Key="KnightGeometry">F1 M 28.5,60.1667C 28.5,55.1053 33.1602,52.0664 35.1911,47.8174C 32.9352,44.7868 30.0833,41.1667 37.7482,29.0917C 38,24.5417 36.1473,26.9167 34.8333,26.9167C 31.6667,26.9167 26.9167,28.5 26.9167,28.5C 25.3333,28.5 23.75,26.5209 23.75,24.9375C 23.75,23.3542 28.5,23.75 30.0833,22.1667C 31.6667,20.5833 36.4167,15.8333 39.5833,15.8333C 41.1667,15.8333 39.5833,19 41.1667,19C 42.6006,19 50.5278,31.9865 47.3064,43.846C 47.6479,44.4781 47.7461,45.1783 47.5,45.9167C 45.9167,50.6667 50.6667,52.25 53.8333,60.1667L 28.5,60.1667 Z</PathGeometry>
-            <PathGeometry x:Key="BishopGeometry">F1 M 34.8333,15.8333L 41.1667,15.8333L 41.1667,17.4167L 39.5833,17.4167L 39.5833,19C 40.0137,19 41.1462,19.585 42.3445,20.5006L 37.678,24.4726C 37.018,25.0463 36.8125,24.9375 37.1259,26.3105C 38.3958,26.5208 38.3039,26.2488 38.9638,25.6751L 43.9375,22.1667C 46.2017,24.6351 47.5717,27.9565 41.8943,29.8582L 41.7969,31.9228L 48.6875,36.4167L 41.7366,36.4167C 41.9291,54.3169 47.8565,50.7995 50.6667,60.1667L 25.3333,60.1667C 28.1435,50.7995 34.0709,54.3169 34.2634,36.4167L 27.3125,36.4167L 34.2031,31.9228L 34.1058,29.8607C 24.326,26.6516 36.4167,21.0626 36.4167,19L 36.4167,17.4167L 34.8333,17.4167L 34.8333,15.8333 Z</PathGeometry>
-            <PathGeometry x:Key="QueenGeometry">F1 M 38,15.4375C 39.3788,15.4375 41.3434,16.4942 41.7781,17.4167L 49.0833,17.4167L 42.75,25.3333L 42.8575,30.7597L 49.0833,33.25L 42.5936,33.25C 42.9492,38.7231 43.2787,42.8806 44.1936,46.083L 48.2917,47.5L 45.4222,47.5C 48.7019,57.3679 53.8333,56.9346 53.8333,60.1667L 22.1667,60.1667C 22.1667,56.9346 27.2981,57.3679 30.5778,47.5L 27.7083,47.5L 31.8064,46.083C 32.7212,42.8806 33.0508,38.723 33.4064,33.25L 26.9167,33.25L 33.1425,30.7597L 33.25,25.3333L 26.9167,17.4167L 34.2218,17.4167C 34.6566,16.4942 36.6212,15.4375 38,15.4375 Z</PathGeometry>
-            <PathGeometry x:Key="KingGeometry">F1 M 29.6875,38L 34.4142,35.1127L 34.7719,30.8206L 34.3056,30.6111C 32.1944,29.5556 31.1389,27.4444 30.0833,25.3333L 36.0208,25.3333L 36.1528,22.1667L 33.25,22.1667L 33.25,19L 36.2847,19L 36.4167,15.8333L 39.5833,15.8333L 39.7153,19L 42.75,19L 42.75,22.1667L 39.8472,22.1667L 39.9792,25.3333L 45.9167,25.3333C 44.8611,27.4444 43.8056,29.5556 41.6944,30.6111L 41.2281,30.8206L 41.5858,35.1127L 46.3125,38L 41.8264,38L 42.75,48.6875L 45.125,49.0833L 45.9167,50.6667L 42.8819,50.6667L 47.5,58.5833L 49.0833,58.5833L 49.0833,60.1667L 26.9167,60.1667L 26.9167,58.5833L 28.5,58.5833L 33.118,50.6667L 30.0833,50.6667L 30.875,49.0833L 33.25,48.6875L 34.1736,38L 29.6875,38 Z</PathGeometry>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

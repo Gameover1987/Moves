@@ -21,7 +21,7 @@ namespace Moves.Engine.Tests
             var expectedFigure = expectedFigureStr.ToFigure();
 
             // When
-            var actualFigure = figureType.CreateFirgure(position);
+            var actualFigure = figureType.CreateFigure(position);
 
             // Then
             Assert.AreEqual(expectedFigure, actualFigure);

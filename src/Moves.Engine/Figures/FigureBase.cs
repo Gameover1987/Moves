@@ -38,11 +38,13 @@ namespace Moves.Engine.Figures
             return _moves;
         }
 
+        public abstract ChessFigureType Type { get; }
+
         protected abstract Position[] GetMovesImpl(IBoard board);
 
         public override string ToString()
         {
-            return string.Format("{0} {1}", this.GetType().Name, Position.PositionStr);
+            return string.Format("{0} {1} {2}", this.GetType().Name, Position.PositionStr, Color);
         }
 
         public override bool Equals(object obj)

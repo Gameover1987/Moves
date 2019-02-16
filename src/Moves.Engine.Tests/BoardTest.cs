@@ -7,7 +7,7 @@ namespace Moves.Engine.Tests
     [TestFixture]
     public class BoardTest
     {
-        [TestCase("HA1 HA3 HC1 HC3", "PB2", null, "HA3 HC3")]
+        [TestCase("NA1 NA3 NC1 NC3", "PB2", null, "NA3 NC3")]
         public void BoardHitTest(string sourceFiguresStr, string addingFigureStr, string expectedAttackingStr, string expectedAttackedStr)
         {
             // Given

@@ -33,31 +33,33 @@ namespace Moves.Engine.Board
         public BoardHitTestResult HitTest(IFigure figure)
         {
             var attackingFigures = new List<IFigure>();
-            var attackedFigures = new List<IFigure>();
 
             var sourceFigureMoves = figure.GetMoves(this);
 
-            foreach (var figureOnBoard in _figures)
+            var figuresToCheck = _figures.Where(x => x.Color != figure.Color).ToArray();
+            foreach (var figureOnBoard in figuresToCheck)
             {
                 var moves = figureOnBoard.GetMoves(this);
                 if (moves.Any(x => x.Equals(figure.Position)))
                 {
                     attackingFigures.Add(figureOnBoard);
-                }                
+                }
             }
 
-            return new BoardHitTestResult
+            var result = new BoardHitTestResult
             {
                 ResultFor = figure,
                 AttackingFigures = attackingFigures
-                    .OrderBy(x=>x.Position.PositionStr)
+                    .OrderBy(x => x.Position.PositionStr)
                     .ToArray(),
 
-                AttackedFigures = _figures
+                AttackedFigures = figuresToCheck
                     .Where(x => sourceFigureMoves.Contains(x.Position))
                     .OrderBy(x => x.Position.PositionStr)
                     .ToArray()
             };
+
+            return result;
         }
     }
 }

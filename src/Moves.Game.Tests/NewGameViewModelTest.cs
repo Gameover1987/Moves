@@ -18,7 +18,7 @@ namespace Moves.Game.Tests
         {
             var mockPlayerViewModelFactory = new Mock<IPlayerViewModelFactory>();
             mockPlayerViewModelFactory
-                .Setup(x => x.CreatePlayer())
+                .Setup(x => x.CreatePlayer(It.IsAny<FigureColor>()))
                 .Returns(() =>
                 {
                     return new PlayerViewModel();

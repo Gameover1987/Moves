@@ -15,5 +15,7 @@ namespace Moves.Engine.Figures
         Position Position { get; set; }
 
         Position[] GetMoves(IBoard board);
+
+        ChessFigureType Type { get; }
     }
 }

@@ -11,6 +11,8 @@ namespace Moves.Engine.Figures
         {
         }
 
+        public override ChessFigureType Type => ChessFigureType.Rook;
+
         protected override Position[] GetMovesImpl(IBoard board)
         {
             var verticalMoves = new List<Position>();

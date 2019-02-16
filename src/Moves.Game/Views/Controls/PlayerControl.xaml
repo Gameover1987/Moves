@@ -19,7 +19,7 @@
         <ListBox Grid.Row="1" Margin="0,6,0,0" Foreground="White" Background="Transparent"
                  ItemsSource="{Binding Figures}"
                  SelectedItem="{Binding SelectedFigure}"
-                 ItemTemplate="{StaticResource ChessFigureStringTemlate}">
+                 ItemTemplate="{DynamicResource ChessFigureStringTemlate}">
         </ListBox>
     </Grid>
 </UserControl>

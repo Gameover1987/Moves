@@ -42,8 +42,37 @@ namespace Moves.Game.Views.Controls
         {
             var element = (FrameworkElement)sender;
             var cell = (IChessBoardCellViewModel)element.DataContext;
+            if (cell.Figure != null)
+            {
+                cell.State = CellState.Red;
+                return;
+            }
+            
+
             var position = new Position(cell.Column, cell.Row);
-            _boardViewModel?.PerformHitTest(position.ToString());
+            var hitTest =_boardViewModel?.PerformHitTest(position.ToString());
+            if (hitTest == null)
+                return;
+
+            if (hitTest.IsFree)
+            {
+                cell.State = CellState.Green;
+            }
+            else
+            {
+                cell.State = CellState.Red;
+            }
+        }
+
+        private void OnCellMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (_boardViewModel.AddingFigure == null)
+                return;
+
+            var element = (FrameworkElement)sender;
+            var cell = (IChessBoardCellViewModel)element.DataContext;
+
+            _boardViewModel.SetFigure(cell.ToPostion());
         }
     }
 }

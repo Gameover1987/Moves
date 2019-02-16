@@ -15,6 +15,8 @@ namespace Moves.Game.ViewModels
             Figures = new ObservableCollection<ChessFigureType>();
         }
 
+        public FigureColor Color { get; set; }
+
         public ObservableCollection<ChessFigureType> Figures { get; private set; }
 
         public event EventHandler<FigureSelectedEventArgs> FigureSelected;

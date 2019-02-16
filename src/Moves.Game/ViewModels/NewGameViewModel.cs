@@ -47,8 +47,8 @@ namespace Moves.Game.ViewModels
 
         public void Initialize()
         {
-            Player1 = _playerViewModelFactory.CreatePlayer();
-            Player2 = _playerViewModelFactory.CreatePlayer();
+            Player1 = _playerViewModelFactory.CreatePlayer(FigureColor.White);
+            Player2 = _playerViewModelFactory.CreatePlayer(FigureColor.Black);
 
             Player1.Nick = "Игрок 1";
             Player2.Nick = "Игрок 2";

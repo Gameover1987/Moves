@@ -11,7 +11,7 @@ namespace Moves.Game.ViewModels.Board
     {
         public IChessBoardCellViewModel CreateCell(int row, int col)
         {
-            var color = (row + col) % 2 == 0 ? FigureColor.White : FigureColor.Black;
+            var color = (row + col) % 2 == 1 ? FigureColor.White : FigureColor.Black;
             return new ChessBoardCellViewModel(row, col, color);
         }
     }

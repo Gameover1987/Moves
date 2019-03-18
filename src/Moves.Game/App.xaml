@@ -10,7 +10,7 @@
 
             <SolidColorBrush x:Key="BlackCellBrush" Color="#B58863" />
             <SolidColorBrush x:Key="WhiteCellBrush" Color="#F0D9B5" />
-            <SolidColorBrush x:Key="WindowBackground" Color="#312E2B" />
+            <SolidColorBrush x:Key="WindowBackground" Color="{x:Static SystemColors.ControlColor}" />
 
             <DataTemplate x:Key="ChessFigureStringTemlate" DataType="{x:Type figures:IFigure}">
                 <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=Self}, Path=DataContext, Converter={StaticResource ChessFigureToStringConverter} }"

@@ -25,7 +25,7 @@
                     Command="{Binding NewGameCommand}"/>
         </StackPanel>
 
-        <TextBlock Grid.Row="0" Text="{Binding GameInfo}" HorizontalAlignment="Center" Foreground="White" FontSize="18"/>
+        <TextBlock Grid.Row="0" Text="{Binding GameInfo}" HorizontalAlignment="Center" FontSize="18"/>
 
         <Grid Grid.Row="1" Margin="0,12,0,0">
             <Grid.ColumnDefinitions>

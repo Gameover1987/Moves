@@ -14,7 +14,6 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <Style TargetType="{x:Type TextBlock}">
-                <Setter Property="Foreground" Value="White"/>
                 <Setter Property="VerticalAlignment" Value="Center"/>
                 <Setter Property="HorizontalAlignment" Value="Center"/>
                 <Setter Property="FontSize" Value="14"/>

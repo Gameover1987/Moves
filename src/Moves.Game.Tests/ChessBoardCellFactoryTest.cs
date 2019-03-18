@@ -10,9 +10,9 @@ namespace Moves.Game.Tests
         /// <summary>
         /// Должен создать клетку правильного цвета
         /// </summary>
-        [TestCase(0, 0, FigureColor.White)]
-        [TestCase(0, 1, FigureColor.Black)]
-        [TestCase(1, 1, FigureColor.White)]
+        [TestCase(0, 0, FigureColor.Black)]
+        [TestCase(0, 1, FigureColor.White)]
+        [TestCase(1, 1, FigureColor.Black)]
         public void ShouldcreateCellWithcorrectColor(int row, int column, FigureColor expectedColor)
         {
             // Given

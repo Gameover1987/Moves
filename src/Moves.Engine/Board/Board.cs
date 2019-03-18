@@ -61,5 +61,10 @@ namespace Moves.Engine.Board
 
             return result;
         }
+
+        public IFigure GetFigureByPosition(string positionStr)
+        {
+            return _figures.FirstOrDefault(x => x.Position.PositionStr == positionStr);
+        }
     }
 }

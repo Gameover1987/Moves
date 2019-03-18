@@ -7,9 +7,9 @@ namespace Moves.Engine.Tests
     [TestFixture]
     public class BishopTest : FigureTestBase
     {
-        [TestCase("A1", "B2 C3 D4 E5 F6 G7 H8")]
-        [TestCase("B8", "A7 C7 D6 E5 F4 G3 H2")]
-        [TestCase("D5", "A8 B7 C6 E4 F3 G2 H1 A2 B3 C4 E6 F7 G8")]
+        [TestCase("a1", "b2 c3 d4 e5 f6 g7 h8")]
+        [TestCase("b8", "a7 c7 d6 e5 f4 g3 h2")]
+        [TestCase("d5", "a8 b7 c6 e4 f3 g2 h1 a2 b3 c4 e6 f7 g8")]
 
         public void ShouldGetValidMoves(string position, string expectedMovesStr)
         {

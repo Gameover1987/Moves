@@ -18,10 +18,11 @@ namespace Moves.Engine.Tests
         public void ShouldCreateFigureByTypeAndPosition(ChessFigureType figureType, string position, string expectedFigureStr)
         {
             // Given
-            var expectedFigure = expectedFigureStr.ToFigure();
+            var expectedFigure = expectedFigureStr.ToFigure(FigureColor.White);
 
             // When
             var actualFigure = figureType.CreateFigure(position);
+            actualFigure.Color = FigureColor.White;
 
             // Then
             Assert.AreEqual(expectedFigure, actualFigure);

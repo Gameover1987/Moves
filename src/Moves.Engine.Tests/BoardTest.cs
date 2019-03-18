@@ -7,17 +7,26 @@ namespace Moves.Engine.Tests
     [TestFixture]
     public class BoardTest
     {
-        [TestCase("NA1 NA3 NC1 NC3", null, "PB2", null, "NA3 NC3")]
-        [TestCase("RA1 NB1", null, "PC1", null, null)]
+        // Тесты для ладьи
+        [TestCase(null, null, "Ra1", null, null)]
+        [TestCase(null, "Ra8", "Ra1", "Ra8", "Ra8")]
+        [TestCase(null, "Pa7", "Ra1", null, "Pa7")]
+        [TestCase(null, "Pa7 Ra8", "Ra1", null, "Pa7")]
+
+        // Тесты для слона
+        [TestCase(null, null, "Bf1", null, null)]
+        [TestCase(null, "Bc3", "Bf1", null, null)]
+        [TestCase(null, "Bc4", "Bf1", "Bc4", "Bc4")]
+        [TestCase(null, "Bc4 Pd3", "Bf1", null, "Pd3")]
         public void BoardHitTest(string sourceWhiteFiguresStr, string sourceBlackFiguresStr, string addingFigureStr, string expectedAttackingStr, string expectedAttackedStr)
         {
             // Given
             var board = Board.Board.CreateDefault();
-            var sourceWhiteFigures = sourceWhiteFiguresStr.ToFigures();
-            var sourceBlackFigures = sourceBlackFiguresStr.ToFigures();
-            var expectedAttackingFigures = expectedAttackingStr.ToFigures();
-            var expectedAttackedFigures = expectedAttackedStr.ToFigures();
-            var addingFigure = addingFigureStr.ToFigure();
+            var sourceWhiteFigures = sourceWhiteFiguresStr.ToFigures(FigureColor.White);
+            var sourceBlackFigures = sourceBlackFiguresStr.ToFigures(FigureColor.Black);
+            var expectedAttackingFigures = expectedAttackingStr.ToFigures(FigureColor.Black);
+            var expectedAttackedFigures = expectedAttackedStr.ToFigures(FigureColor.Black);
+            var addingFigure = addingFigureStr.ToFigure(FigureColor.White);
             addingFigure.Color = FigureColor.White;
             foreach (var figure in sourceWhiteFigures.Concat(sourceBlackFigures))
             {

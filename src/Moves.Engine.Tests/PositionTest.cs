@@ -6,9 +6,9 @@ namespace Moves.Engine.Tests
     [TestFixture]
     public class PositionTest
     {
-        [TestCase("A1", 1, 1)]
-        [TestCase("B2", 2, 2)]
-        [TestCase("H8", 8, 8)]
+        [TestCase("a1", 1, 1)]
+        [TestCase("b2", 2, 2)]
+        [TestCase("h8", 8, 8)]
         public void ShouldCreatePositionFromString(string positionStr, int expectedColumn, int expectedRow)
         {
             // Given
@@ -21,9 +21,9 @@ namespace Moves.Engine.Tests
         }
 
 
-        [TestCase(1, 1, "A1")]
-        [TestCase(5, 5, "E5")]
-        [TestCase(8, 8, "H8")]
+        [TestCase(1, 1, "a1")]
+        [TestCase(5, 5, "e5")]
+        [TestCase(8, 8, "h8")]
         public void ShouldCreatePositionFromInt(int column, int row, string expectedPositionStr)
         {
             // Given

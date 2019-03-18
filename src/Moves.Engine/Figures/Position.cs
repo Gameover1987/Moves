@@ -5,12 +5,12 @@ namespace Moves.Engine.Figures
     public class Position
     {
         private readonly string _positionStr;
-        private const int UtfBegin = 64;
+        private const int UtfBegin = 96;
 
         public Position(int column, int row)
         {
             var letter = Char.ConvertFromUtf32(column + UtfBegin);
-            _positionStr = letter + row.ToString();
+            _positionStr = letter + row;
             FromString(_positionStr);
         }
 

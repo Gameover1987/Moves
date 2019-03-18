@@ -14,5 +14,7 @@ namespace Moves.Engine.Board
         void AddFigure(IFigure figure);
 
         BoardHitTestResult HitTest(IFigure figure);
+
+        IFigure GetFigureByPosition(string positionStr);
     }
 }

@@ -1,4 +1,5 @@
-﻿using Moves.Engine.Board;
+﻿using System.Collections.Generic;
+using Moves.Engine.Board;
 
 namespace Moves.Engine.Figures
 {
@@ -40,8 +41,6 @@ namespace Moves.Engine.Figures
 
         public abstract ChessFigureType Type { get; }
 
-        protected abstract Position[] GetMovesImpl(IBoard board);
-
         public override string ToString()
         {
             return string.Format("{0} {1} {2}", Color, GetType().Name, Position.PositionStr);
@@ -59,6 +58,25 @@ namespace Moves.Engine.Figures
         public override int GetHashCode()
         {
             return ToString().GetHashCode();
+        }
+
+        protected abstract Position[] GetMovesImpl(IBoard board);
+
+        protected bool AddMove(IBoard board, Position position, List<Position> moves)
+        {
+            var figureByPosition = board.GetFigureByPosition(position.PositionStr);
+            if (figureByPosition != null)
+            {
+                if (figureByPosition.Color != Color)
+                {
+                    moves.Add(position);
+                }
+
+                return true;
+            }
+
+            moves.Add(position);
+            return false;
         }
     }
 }

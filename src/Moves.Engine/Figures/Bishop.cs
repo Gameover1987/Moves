@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Moves.Engine.Board;
 
@@ -15,21 +16,40 @@ namespace Moves.Engine.Figures
 
         protected override Position[] GetMovesImpl(IBoard board)
         {
-            var allMoves = new List<Position>();
-            for (int i = 1; i < board.Width; i++)
+            var moves = new List<Position>();
+
+            // Right Top
+            var column = Position.Column;
+            var row = Position.Row;
+            while (CanMove(board, column, row))
             {
-                allMoves.Add(new Position(Position.Column - i, Position.Row - i));
-                allMoves.Add(new Position(Position.Column + i, Position.Row - i));
-                allMoves.Add(new Position(Position.Column - i, Position.Row + i));
-                allMoves.Add(new Position(Position.Column + i, Position.Row + i));
+                column++;
+                row++;
+                var position = new Position(column, row);
+                if (AddMove(board, position, moves))
+                    break;
             }
 
-            var posibleMoves = allMoves
-                .Where(x => x.Column > 0 && x.Column <= board.Width && x.Row > 0 && x.Row <= board.Height)
-                .OrderBy(x => x.PositionStr)
-                .ToArray();
+            // Right Bottom
+            column = Position.Column;
+            row = Position.Row;
+            while (CanMove(board, column, row))
+            {
+                column++;
+                row--;
+                var position = new Position(column, row);
+                if (AddMove(board, position, moves))
+                    break;
+            }
 
-            return posibleMoves;
+
+            return moves.ToArray();
         }
+
+        //private bool CanMove(IBoard board, int column, int row)
+        //{
+        //    return column > 0 && column <= board.Width &&
+        //           row > 0 && row <= board.Height;
+        //}
     }
 }

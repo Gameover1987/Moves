@@ -12,42 +12,52 @@ namespace Moves.Engine.Tests
             return positions;
         }
 
-        public static IFigure[] ToFigures(this string figuresStr)
+        public static IFigure[] ToFigures(this string figuresStr, FigureColor color)
         {
             if (string.IsNullOrWhiteSpace(figuresStr))
                 return Enumerable.Empty<IFigure>().ToArray();
 
-            var figures = figuresStr.Split(' ').Select(x => x.ToFigure()).OrderBy(x => x.Position.PositionStr).ToArray();
+            var figures = figuresStr.Split(' ').Select(x => x.ToFigure(color)).OrderBy(x => x.Position.PositionStr).ToArray();
             return figures;
         }
 
-        public static IFigure ToFigure(this string figureStr)
+        public static IFigure ToFigure(this string figureStr, FigureColor color)
         {
-            var figureLetter = figureStr[0].ToString().ToUpper();
+            var figureLetter = figureStr[0].ToString();
             var positionStr = figureStr.Substring(1);
+            IFigure figure = null;
             switch (figureLetter)
             {
                 case "P":
-                    return new Pawn(positionStr);
+                    figure = new Pawn(positionStr);
+                    break;
 
                 case "R":
-                    return new Rook(positionStr);
+                    figure = new Rook(positionStr);
+                    break;
 
                 case "N":
-                    return new Knight(positionStr);
+                    figure = new Knight(positionStr);
+                    break;
 
                 case "B":
-                    return new Bishop(positionStr);
+                    figure = new Bishop(positionStr);
+                    break;
 
                 case "K":
-                    return new King(positionStr);
+                    figure = new King(positionStr);
+                    break;
 
                 case "Q":
-                    return new Queen(positionStr);
+                    figure = new Queen(positionStr);
+                    break;
 
                 default:
                     throw new NotSupportedException("Неизвестный тип фигуры");
             }
+
+            figure.Color = color;
+            return figure;
         }
     }
 }

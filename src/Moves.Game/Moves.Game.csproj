@@ -127,7 +127,7 @@
     <Compile Include="Views\Converters\ChessFigureToStringConverter.cs" />
     <Compile Include="Views\DesignTime\DesignTimeBoardViewModel.cs" />
     <Compile Include="Views\DesignTime\DesignTimeChessBoardCellViewModel.cs" />
-    <Compile Include="Views\DesignTime\DesignTimeMovesViewModel.cs" />
+    <Compile Include="Views\DesignTime\DesignTimeMainViewModel.cs" />
     <Compile Include="Views\DesignTime\DesignTimeNewGameViewModel.cs" />
     <Compile Include="Views\DesignTime\DesignTimePlayerViewModel.cs" />
     <Compile Include="Views\Windows\IWindow.cs" />

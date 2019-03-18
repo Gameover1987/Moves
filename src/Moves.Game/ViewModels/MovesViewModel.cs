@@ -1,4 +1,5 @@
-﻿using Moves.Game.Interaction;
+﻿using Moves.Engine;
+using Moves.Game.Interaction;
 using Moves.Game.ViewModels.Board;
 using Moves.Game.ViewModels.Commands;
 using Moves.Game.Views.Converters;
@@ -26,6 +27,8 @@ namespace Moves.Game.ViewModels
             newGame.GiveDefaultFigureSetCommand.Execute();
             Player1 = newGame.Player1;
             Player2 = newGame.Player2;
+
+            ActivePlayer = Player1;
         }
 
         public IPlayerViewModel Player1
@@ -72,26 +75,37 @@ namespace Moves.Game.ViewModels
 
                 if (Player1.SelectedFigure == null &&
                     Player2.SelectedFigure == null)
-                    return string.Format("Ходит {0}", Player1.Nick);
-
-                string playerName = null;
-                if (Player1.SelectedFigure != null)
+                    return string.Format("Ходит {0}", ActivePlayer.Nick);
+                
+                if (ActivePlayer.SelectedFigure != null)
                 {
-                    return string.Format("Ходит {0}, выбрана '{1}'", Player1.Nick, Player1.SelectedFigure.Value.Localize());
-                }
-                else if (Player2.SelectedFigure != null)
-                {
-                    return string.Format("Ходит {0}, выбрана '{1}'", Player2.Nick, Player2.SelectedFigure.Value.Localize());
+                    return string.Format("Ходит {0}, выбрана '{1}'", ActivePlayer.Nick, ActivePlayer.SelectedFigure.Value.Localize());
                 }
 
                 return null;
             }
         }
 
+        public void DoMove(Position position)
+        {
+            var figure = Board.AddingFigure.Value.CreateFigure(ActivePlayer.Color, position);
+            Board.SetFigure(figure);
+            ActivePlayer.Figures.Remove(figure.Type);
+
+            if (ActivePlayer != Player1)
+                ActivePlayer = Player1;
+            else
+                ActivePlayer = Player2;
+
+            OnPropertyChanged(() => GameInfo);
+        }
+
         public IBoardViewModel Board
         {
             get { return _board; }
         }
+
+        public IPlayerViewModel ActivePlayer { get; private set; }
 
         public INotifyCommand NewGameCommand { get; private set; }
 

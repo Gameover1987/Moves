@@ -20,6 +20,8 @@ namespace Moves.Game.ViewModels.Board
         IFigure Figure { get; set; }
 
         CellState State { get; set; }
+
+        Position ToPosition();
     }
 
     public static class ChessBoardCellViewModelExtensions

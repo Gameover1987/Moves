@@ -17,7 +17,7 @@
 
         public override string ToString()
         {
-            return string.Format("{0} {1} {2}", Color, GetType().Name, Position.PositionStr);
+            return string.Format("{0} {1} {2}", Color, Type, Position.PositionStr);
         }
 
         public override bool Equals(object obj)

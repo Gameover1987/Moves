@@ -60,15 +60,17 @@ namespace Moves.Game.Views.DesignTime
         }
 
         public IChessBoardCellViewModel[] Cells => _cells;
+
         public FigureColor CurrentColor { get; set; }
 
         public FigureType? AddingFigure { get; set; }
+
         public BoardHitTestResult PerformHitTest(string positionStr)
         {
             throw new System.NotImplementedException();
         }
 
-        public void SetFigure(Position position)
+        public void SetFigure(IFigure figure)
         {
             throw new System.NotImplementedException();
         }

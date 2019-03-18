@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 using Moves.Engine;
+using Moves.Game.ViewModels;
 using Moves.Game.ViewModels.Board;
 
 namespace Moves.Game.Views.Controls
@@ -10,7 +11,7 @@ namespace Moves.Game.Views.Controls
     /// </summary>
     public partial class ChessBoardControl
     {
-        private IBoardViewModel _boardViewModel;
+        private IMovesViewModel _movesViewModel;
 
         public ChessBoardControl()
         {
@@ -34,11 +35,12 @@ namespace Moves.Game.Views.Controls
 
         private void ChessBoardControl_OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            _boardViewModel = e.NewValue as IBoardViewModel;
+            _movesViewModel = e.NewValue as IMovesViewModel;
         }
 
         private void PerformHitTest(object sender)
         {
+            var board = _movesViewModel.Board;
             var element = (FrameworkElement)sender;
             var cell = (IChessBoardCellViewModel)element.DataContext;
             if (cell.Figure != null)
@@ -48,7 +50,7 @@ namespace Moves.Game.Views.Controls
             }
 
             var position = new Position(cell.Column, cell.Row);
-            var hitTest =_boardViewModel?.PerformHitTest(position.ToString());
+            var hitTest = board.PerformHitTest(position.ToString());
             if (hitTest == null)
                 return;
 
@@ -64,13 +66,14 @@ namespace Moves.Game.Views.Controls
 
         private void OnCellMouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (_boardViewModel.AddingFigure == null)
+            var board = _movesViewModel.Board;
+            if (board.AddingFigure == null)
                 return;
 
             var element = (FrameworkElement)sender;
             var cell = (IChessBoardCellViewModel)element.DataContext;
 
-            _boardViewModel.SetFigure(cell.ToPostion());
+            _movesViewModel.DoMove(cell.ToPosition());
         }
     }
 }

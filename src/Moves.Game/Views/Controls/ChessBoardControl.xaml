@@ -9,7 +9,7 @@
              xmlns:figures="clr-namespace:Moves.Engine;assembly=Moves.Engine"
              mc:Ignorable="d" 
              d:DesignHeight="550" d:DesignWidth="550"
-             d:DataContext="{d:DesignInstance Type={x:Type designTime:DesignTimeBoardViewModel}, IsDesignTimeCreatable=True}"
+             d:DataContext="{d:DesignInstance Type={x:Type designTime:DesignTimeMainViewModel}, IsDesignTimeCreatable=True}"
              DataContextChanged="ChessBoardControl_OnDataContextChanged">
     <UserControl.Resources>
         <ResourceDictionary>
@@ -47,6 +47,7 @@
         </Grid.ColumnDefinitions>
 
         <ListBox Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="8" Grid.RowSpan="8" BorderThickness="0" Background="Transparent"
+                 DataContext="{Binding Board}"
                  SnapsToDevicePixels="True"
                  VerticalContentAlignment="Stretch"
                  HorizontalContentAlignment="Stretch"

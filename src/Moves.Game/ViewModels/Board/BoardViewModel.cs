@@ -57,15 +57,12 @@ namespace Moves.Game.ViewModels.Board
             return hitTest;
         }
 
-        public void SetFigure(Position position)
+        public void SetFigure(IFigure figure)
         {
-            if (AddingFigure == null)
+            if (figure == null)
                 return;
-
-            var addingFigure = (FigureType)AddingFigure;
-            var figure = addingFigure.CreateFigure(CurrentColor, position);
-
-            var cell = Cells.Single(x => x.Column == position.Column && x.Row == position.Row);
+            
+            var cell = Cells.Single(x => x.Column == figure.Position.Column && x.Row == figure.Position.Row);
             cell.Figure = figure;
             _board.AddFigure(figure);
         }

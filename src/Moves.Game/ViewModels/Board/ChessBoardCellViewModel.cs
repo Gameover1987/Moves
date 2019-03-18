@@ -42,6 +42,11 @@ namespace Moves.Game.ViewModels.Board
             }
         }
 
+        public Position ToPosition()
+        {
+            return new Position(Column, Row);
+        }
+
         public override string ToString()
         {
             if (Figure != null)

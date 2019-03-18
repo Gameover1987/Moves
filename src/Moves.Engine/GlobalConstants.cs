@@ -1,4 +1,4 @@
-﻿namespace Moves.Engine.Board
+﻿namespace Moves.Engine
 {
     public static class GlobalConstants
     {

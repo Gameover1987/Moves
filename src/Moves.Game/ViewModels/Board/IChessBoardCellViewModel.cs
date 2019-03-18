@@ -1,4 +1,4 @@
-﻿using Moves.Engine.Figures;
+﻿using Moves.Engine;
 
 namespace Moves.Game.ViewModels.Board
 {

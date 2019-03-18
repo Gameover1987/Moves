@@ -40,21 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Board\Board.cs" />
-    <Compile Include="Board\BoardHitTestResult.cs" />
-    <Compile Include="Board\GlobalConstants.cs" />
-    <Compile Include="Figures\Bishop.cs" />
-    <Compile Include="Figures\ChessFigureType.cs" />
-    <Compile Include="Figures\FigureBase.cs" />
-    <Compile Include="Figures\FigureExtensions.cs" />
-    <Compile Include="Figures\King.cs" />
-    <Compile Include="Figures\Knight.cs" />
-    <Compile Include="Figures\Pawn.cs" />
-    <Compile Include="Figures\Queen.cs" />
-    <Compile Include="Figures\Rook.cs" />
-    <Compile Include="Figures\Position.cs" />
-    <Compile Include="Board\IBoard.cs" />
-    <Compile Include="Figures\IFigure.cs" />
+    <Compile Include="Board.cs" />
+    <Compile Include="BoardHitTestResult.cs" />
+    <Compile Include="GlobalConstants.cs" />
+    <Compile Include="FigureType.cs" />
+    <Compile Include="Figure.cs" />
+    <Compile Include="FigureExtensions.cs" />
+    <Compile Include="Position.cs" />
+    <Compile Include="IBoard.cs" />
+    <Compile Include="IFigure.cs" />
+    <Compile Include="MoveStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

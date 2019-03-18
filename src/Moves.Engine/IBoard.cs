@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using Moves.Engine.Figures;
 
-namespace Moves.Engine.Board
+namespace Moves.Engine
 {
     public interface IBoard
     {
@@ -15,6 +14,6 @@ namespace Moves.Engine.Board
 
         BoardHitTestResult HitTest(IFigure figure);
 
-        IFigure GetFigureByPosition(string positionStr);
+        Position[] GetMoves(IFigure figure);
     }
 }

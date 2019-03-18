@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using Moves.Engine.Board;
+using Moves.Engine;
 using Moves.Game.Interaction;
 using Moves.Game.ViewModels;
 using Moves.Game.ViewModels.Board;

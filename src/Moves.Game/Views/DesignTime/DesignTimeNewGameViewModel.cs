@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
-using Moves.Engine.Figures;
+using Moves.Engine;
 using Moves.Game.ViewModels;
 using Moves.Game.ViewModels.Commands;
 
@@ -15,38 +15,38 @@ namespace Moves.Game.Views.DesignTime
 
             for (var i = 0; i < 8; i++)
             {
-                Player1.Figures.Add(ChessFigureType.Pawn);
-                Player2.Figures.Add(ChessFigureType.Pawn);
+                Player1.Figures.Add(FigureType.Pawn);
+                Player2.Figures.Add(FigureType.Pawn);
             }
 
 
-            Player1.Figures.Add(ChessFigureType.Rook);
-            Player1.Figures.Add(ChessFigureType.Rook);
-            Player1.Figures.Add(ChessFigureType.Knight);
-            Player1.Figures.Add(ChessFigureType.Knight);
-            Player1.Figures.Add(ChessFigureType.Bishop);
-            Player1.Figures.Add(ChessFigureType.Bishop);
-            Player1.Figures.Add(ChessFigureType.Queen);
-            Player1.Figures.Add(ChessFigureType.King);
+            Player1.Figures.Add(FigureType.Rook);
+            Player1.Figures.Add(FigureType.Rook);
+            Player1.Figures.Add(FigureType.Knight);
+            Player1.Figures.Add(FigureType.Knight);
+            Player1.Figures.Add(FigureType.Bishop);
+            Player1.Figures.Add(FigureType.Bishop);
+            Player1.Figures.Add(FigureType.Queen);
+            Player1.Figures.Add(FigureType.King);
 
-            Player2.Figures.Add(ChessFigureType.Rook);
-            Player2.Figures.Add(ChessFigureType.Rook);
-            Player2.Figures.Add(ChessFigureType.Knight);
-            Player2.Figures.Add(ChessFigureType.Knight);
-            Player2.Figures.Add(ChessFigureType.Bishop);
-            Player2.Figures.Add(ChessFigureType.Bishop);
-            Player2.Figures.Add(ChessFigureType.Queen);
-            Player2.Figures.Add(ChessFigureType.King);
+            Player2.Figures.Add(FigureType.Rook);
+            Player2.Figures.Add(FigureType.Rook);
+            Player2.Figures.Add(FigureType.Knight);
+            Player2.Figures.Add(FigureType.Knight);
+            Player2.Figures.Add(FigureType.Bishop);
+            Player2.Figures.Add(FigureType.Bishop);
+            Player2.Figures.Add(FigureType.Queen);
+            Player2.Figures.Add(FigureType.King);
             
 
-            Figures = new ObservableCollection<ChessFigureType>
+            Figures = new ObservableCollection<FigureType>
             {
-                ChessFigureType.Pawn,
-                ChessFigureType.Rook,
-                ChessFigureType.Knight,
-                ChessFigureType.Bishop,
-                ChessFigureType.Queen,
-                ChessFigureType.King,
+                FigureType.Pawn,
+                FigureType.Rook,
+                FigureType.Knight,
+                FigureType.Bishop,
+                FigureType.Queen,
+                FigureType.King,
             };
 
             SelectedFigure = Figures.Last();
@@ -56,9 +56,9 @@ namespace Moves.Game.Views.DesignTime
 
         public IPlayerViewModel Player2 { get; private set; }
 
-        public ObservableCollection<ChessFigureType> Figures { get; private set; }
+        public ObservableCollection<FigureType> Figures { get; private set; }
 
-        public ChessFigureType SelectedFigure { get; set; }
+        public FigureType SelectedFigure { get; set; }
 
         public INotifyCommand GiveFigureToPlayer1Command { get; private set; }
 

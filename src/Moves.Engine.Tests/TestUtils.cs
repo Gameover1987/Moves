@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using Moves.Engine.Figures;
 
 namespace Moves.Engine.Tests
 {
@@ -29,34 +28,33 @@ namespace Moves.Engine.Tests
             switch (figureLetter)
             {
                 case "P":
-                    figure = new Pawn(positionStr);
+                    figure = new Figure(FigureType.Pawn, color, positionStr);
                     break;
 
                 case "R":
-                    figure = new Rook(positionStr);
+                    figure = new Figure(FigureType.Rook, color, positionStr);
                     break;
 
                 case "N":
-                    figure = new Knight(positionStr);
+                    figure = new Figure(FigureType.Knight, color, positionStr);
                     break;
 
                 case "B":
-                    figure = new Bishop(positionStr);
+                    figure = new Figure(FigureType.Bishop, color, positionStr);
                     break;
 
                 case "K":
-                    figure = new King(positionStr);
+                    figure = new Figure(FigureType.King, color, positionStr);
                     break;
 
                 case "Q":
-                    figure = new Queen(positionStr);
+                    figure = new Figure(FigureType.Queen, color, positionStr);
                     break;
 
                 default:
                     throw new NotSupportedException("Неизвестный тип фигуры");
             }
-
-            figure.Color = color;
+            
             return figure;
         }
     }

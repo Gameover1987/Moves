@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using Moves.Game.Views.DesignTime;
 
 namespace Moves.Game.Views.Windows
 {

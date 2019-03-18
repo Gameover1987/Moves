@@ -1,6 +1,6 @@
-﻿using Moves.Engine.Figures;
-using Moves.Game.ViewModels.Commands;
+﻿using Moves.Game.ViewModels.Commands;
 using System.Collections.ObjectModel;
+using Moves.Engine;
 
 namespace Moves.Game.ViewModels
 {
@@ -9,8 +9,8 @@ namespace Moves.Game.ViewModels
         IPlayerViewModel Player1 { get; }
         IPlayerViewModel Player2 { get; }
 
-        ObservableCollection<ChessFigureType> Figures { get; }
-        ChessFigureType SelectedFigure { get; set; }
+        ObservableCollection<FigureType> Figures { get; }
+        FigureType SelectedFigure { get; set; }
 
         INotifyCommand GiveFigureToPlayer1Command { get; }
         INotifyCommand GiveFigureToPlayer2Command { get; }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Moves.Engine.Figures;
+﻿using Moves.Engine;
 using Moves.Game.ViewModels.Board;
 
 namespace Moves.Game.Views.DesignTime
@@ -13,7 +8,7 @@ namespace Moves.Game.Views.DesignTime
         public DesignTimeChessBoardCellViewModel()
             : base(1, 1, FigureColor.Black)
         {
-            Figure = new Pawn("A2");
+            Figure = new Figure(FigureType.Pawn, FigureColor.White, "A2");
         }
     }
 }

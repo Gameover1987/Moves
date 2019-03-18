@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using Moves.Engine.Figures;
+using Moves.Engine;
 using Moves.Game.ViewModels;
 
 namespace Moves.Game.Views.DesignTime
@@ -9,14 +9,14 @@ namespace Moves.Game.Views.DesignTime
     {
         public DesignTimePlayerViewModel()
         {
-            Figures = new ObservableCollection<ChessFigureType>();
+            Figures = new ObservableCollection<FigureType>();
         }
 
         public string Nick { get; set; }
         public FigureColor Color { get; set; }
 
-        public ObservableCollection<ChessFigureType> Figures { get; private set; }
+        public ObservableCollection<FigureType> Figures { get; private set; }
         public event EventHandler<FigureSelectedEventArgs> FigureSelected;
-        public ChessFigureType? SelectedFigure { get; set; }
+        public FigureType? SelectedFigure { get; set; }
     }
 }

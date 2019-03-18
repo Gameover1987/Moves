@@ -1,8 +1,8 @@
-﻿using Moves.Engine.Figures;
-using Moves.Game.ViewModels.Commands;
+﻿using Moves.Game.ViewModels.Commands;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Moves.Engine;
 using Moves.Game.Views.Windows;
 
 namespace Moves.Game.ViewModels
@@ -10,8 +10,8 @@ namespace Moves.Game.ViewModels
     public sealed class NewGameViewModel : ViewModelBase, INewGameViewModel
     {
         private readonly IPlayerViewModelFactory _playerViewModelFactory;
-        private ObservableCollection<ChessFigureType> _figures;
-        private ChessFigureType _selectedFigure;
+        private ObservableCollection<FigureType> _figures;
+        private FigureType _selectedFigure;
 
         public NewGameViewModel(IPlayerViewModelFactory playerViewModelFactory)
         {
@@ -26,9 +26,9 @@ namespace Moves.Game.ViewModels
 
         public IPlayerViewModel Player2 { get; private set; }
 
-        public ObservableCollection<ChessFigureType> Figures { get { return _figures; } }
+        public ObservableCollection<FigureType> Figures { get { return _figures; } }
 
-        public ChessFigureType SelectedFigure
+        public FigureType SelectedFigure
         {
             get => _selectedFigure;
             set
@@ -53,7 +53,7 @@ namespace Moves.Game.ViewModels
             Player1.Nick = "Игрок 1";
             Player2.Nick = "Игрок 2";
 
-            _figures = new ObservableCollection<ChessFigureType>(Enum.GetValues(typeof(ChessFigureType)).Cast<ChessFigureType>());
+            _figures = new ObservableCollection<FigureType>(Enum.GetValues(typeof(FigureType)).Cast<FigureType>());
         }
 
         private void GiveFigureToPlayer1CommandHandler()
@@ -73,26 +73,26 @@ namespace Moves.Game.ViewModels
 
             for (var i = 0; i < 8; i++)
             {
-                Player1.Figures.Add(ChessFigureType.Pawn);
-                Player2.Figures.Add(ChessFigureType.Pawn);
+                Player1.Figures.Add(FigureType.Pawn);
+                Player2.Figures.Add(FigureType.Pawn);
             }
 
             for (int i = 0; i < 2; i++)
             {
-                Player1.Figures.Add(ChessFigureType.Rook);
-                Player1.Figures.Add(ChessFigureType.Knight);
-                Player1.Figures.Add(ChessFigureType.Bishop);
+                Player1.Figures.Add(FigureType.Rook);
+                Player1.Figures.Add(FigureType.Knight);
+                Player1.Figures.Add(FigureType.Bishop);
 
-                Player2.Figures.Add(ChessFigureType.Rook);
-                Player2.Figures.Add(ChessFigureType.Knight);
-                Player2.Figures.Add(ChessFigureType.Bishop);
+                Player2.Figures.Add(FigureType.Rook);
+                Player2.Figures.Add(FigureType.Knight);
+                Player2.Figures.Add(FigureType.Bishop);
             }
 
-            Player1.Figures.Add(ChessFigureType.Queen);
-            Player1.Figures.Add(ChessFigureType.King);
+            Player1.Figures.Add(FigureType.Queen);
+            Player1.Figures.Add(FigureType.King);
 
-            Player2.Figures.Add(ChessFigureType.Queen);
-            Player2.Figures.Add(ChessFigureType.King);
+            Player2.Figures.Add(FigureType.Queen);
+            Player2.Figures.Add(FigureType.King);
         }
 
         private void OkCommandHandler(IWindow window)

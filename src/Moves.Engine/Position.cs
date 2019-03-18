@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Moves.Engine.Figures
+namespace Moves.Engine
 {
     public class Position
     {

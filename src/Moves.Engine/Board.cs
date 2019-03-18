@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using Moves.Engine.Figures;
 
-namespace Moves.Engine.Board
+namespace Moves.Engine
 {
     public class Board : IBoard
     {
@@ -34,12 +34,12 @@ namespace Moves.Engine.Board
         {
             var attackingFigures = new List<IFigure>();
 
-            var sourceFigureMoves = figure.GetMoves(this);
+            var sourceFigureMoves = GetMoves(figure);
 
             var figuresToCheck = _figures.Where(x => x.Color != figure.Color).ToArray();
             foreach (var figureOnBoard in figuresToCheck)
             {
-                var moves = figureOnBoard.GetMoves(this);
+                var moves = GetMoves(figureOnBoard);
                 if (moves.Any(x => x.Equals(figure.Position)))
                 {
                     attackingFigures.Add(figureOnBoard);
@@ -60,6 +60,27 @@ namespace Moves.Engine.Board
             };
 
             return result;
+        }
+
+        public Position[] GetMoves(IFigure figure)
+        {
+            switch (figure.Type)
+            {
+                case FigureType.Pawn:
+                    return this.GetPawnMoves(figure);
+                case FigureType.Rook:
+                    return this.GetRookMoves(figure);
+                case FigureType.Knight:
+                    return this.GetKnightMoves(figure);
+                case FigureType.Bishop:
+                    return this.GetBishopMoves(figure);
+                case FigureType.Queen:
+                    return this.GetQueenMoves(figure);
+                case FigureType.King:
+                    return this.GetKingMoves(figure);
+                default:
+                    throw new ArgumentException("Unknown type of figure");
+            }
         }
 
         public IFigure GetFigureByPosition(string positionStr)

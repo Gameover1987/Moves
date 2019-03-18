@@ -1,6 +1,6 @@
-﻿namespace Moves.Engine.Figures
+﻿namespace Moves.Engine
 {
-    public enum ChessFigureType
+    public enum FigureType
     {
         Pawn,
         Rook,

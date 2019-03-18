@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:designTime="clr-namespace:Moves.Game.Views.DesignTime"
              xmlns:board="clr-namespace:Moves.Game.ViewModels.Board"
-             xmlns:figures="clr-namespace:Moves.Engine.Figures;assembly=Moves.Engine"
              xmlns:controls="clr-namespace:Moves.Game.Views.Controls"
+             xmlns:figures="clr-namespace:Moves.Engine;assembly=Moves.Engine"
              mc:Ignorable="d" 
              d:DesignHeight="550" d:DesignWidth="550"
              d:DataContext="{d:DesignInstance Type={x:Type designTime:DesignTimeBoardViewModel}, IsDesignTimeCreatable=True}"
@@ -47,6 +47,7 @@
         </Grid.ColumnDefinitions>
 
         <ListBox Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="8" Grid.RowSpan="8" BorderThickness="0" Background="Transparent"
+                 SnapsToDevicePixels="True"
                  VerticalContentAlignment="Stretch"
                  HorizontalContentAlignment="Stretch"
                  ItemsSource="{Binding Cells}">
@@ -87,11 +88,11 @@
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding State}" Value="{x:Static board:CellState.Red}">
                                         <Setter Property="BorderBrush" Value="Red"/>
-                                        <Setter Property="BorderThickness" Value="2"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding State}" Value="{x:Static board:CellState.Green}">
                                         <Setter Property="BorderBrush" Value="ForestGreen"/>
-                                        <Setter Property="BorderThickness" Value="2"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>

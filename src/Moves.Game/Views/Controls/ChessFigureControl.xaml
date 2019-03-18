@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:figures="clr-namespace:Moves.Engine.Figures;assembly=Moves.Engine"
              xmlns:designTime="clr-namespace:Moves.Game.Views.DesignTime"
+             xmlns:figures="clr-namespace:Moves.Engine;assembly=Moves.Engine"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type={x:Type designTime:DesignTimeChessBoardCellViewModel}, IsDesignTimeCreatable=False}">
     <UserControl.Resources>
@@ -704,7 +704,7 @@
                     <!--White figures-->
                     <MultiDataTrigger>
                         <MultiDataTrigger.Conditions>
-                            <Condition Binding="{Binding Figure.Type}" Value="{x:Static figures:ChessFigureType.Pawn}"/>
+                            <Condition Binding="{Binding Figure.Type}" Value="{x:Static figures:FigureType.Pawn}"/>
                             <Condition Binding="{Binding Figure.Color}" Value="{x:Static figures:FigureColor.White}"/>
                         </MultiDataTrigger.Conditions>
                         <Setter Property="Background">
@@ -715,7 +715,7 @@
                     </MultiDataTrigger>
                     <MultiDataTrigger>
                         <MultiDataTrigger.Conditions>
-                            <Condition Binding="{Binding Figure.Type}" Value="{x:Static figures:ChessFigureType.Rook}"/>
+                            <Condition Binding="{Binding Figure.Type}" Value="{x:Static figures:FigureType.Rook}"/>
                             <Condition Binding="{Binding Figure.Color}" Value="{x:Static figures:FigureColor.White}"/>
                         </MultiDataTrigger.Conditions>
                         <Setter Property="Background">
@@ -726,7 +726,7 @@
                     </MultiDataTrigger>
                     <MultiDataTrigger>
                         <MultiDataTrigger.Conditions>
-                            <Condition Binding="{Binding Figure.Type}" Value="{x:Static figures:ChessFigureType.Knight}"/>
+                            <Condition Binding="{Binding Figure.Type}" Value="{x:Static figures:FigureType.Knight}"/>
                             <Condition Binding="{Binding Figure.Color}" Value="{x:Static figures:FigureColor.White}"/>
                         </MultiDataTrigger.Conditions>
                         <Setter Property="Background">
@@ -737,7 +737,7 @@
                     </MultiDataTrigger>
                     <MultiDataTrigger>
                         <MultiDataTrigger.Conditions>
-                            <Condition Binding="{Binding Figure.Type}" Value="{x:Static figures:ChessFigureType.Bishop}"/>
+                            <Condition Binding="{Binding Figure.Type}" Value="{x:Static figures:FigureType.Bishop}"/>
                             <Condition Binding="{Binding Figure.Color}" Value="{x:Static figures:FigureColor.White}"/>
                         </MultiDataTrigger.Conditions>
                         <Setter Property="Background">
@@ -748,7 +748,7 @@
                     </MultiDataTrigger>
                     <MultiDataTrigger>
                         <MultiDataTrigger.Conditions>
-                            <Condition Binding="{Binding Figure.Type}" Value="{x:Static figures:ChessFigureType.Queen}"/>
+                            <Condition Binding="{Binding Figure.Type}" Value="{x:Static figures:FigureType.Queen}"/>
                             <Condition Binding="{Binding Figure.Color}" Value="{x:Static figures:FigureColor.White}"/>
                         </MultiDataTrigger.Conditions>
                         <Setter Property="Background">
@@ -759,7 +759,7 @@
                     </MultiDataTrigger>
                     <MultiDataTrigger>
                         <MultiDataTrigger.Conditions>
-                            <Condition Binding="{Binding Figure.Type}" Value="{x:Static figures:ChessFigureType.King}"/>
+                            <Condition Binding="{Binding Figure.Type}" Value="{x:Static figures:FigureType.King}"/>
                             <Condition Binding="{Binding Figure.Color}" Value="{x:Static figures:FigureColor.White}"/>
                         </MultiDataTrigger.Conditions>
                         <Setter Property="Background">
@@ -772,7 +772,7 @@
                     <!--Black figures-->
                     <MultiDataTrigger>
                         <MultiDataTrigger.Conditions>
-                            <Condition Binding="{Binding Figure.Type}" Value="{x:Static figures:ChessFigureType.Pawn}"/>
+                            <Condition Binding="{Binding Figure.Type}" Value="{x:Static figures:FigureType.Pawn}"/>
                             <Condition Binding="{Binding Figure.Color}" Value="{x:Static figures:FigureColor.Black}"/>
                         </MultiDataTrigger.Conditions>
                         <Setter Property="Background">
@@ -783,7 +783,7 @@
                     </MultiDataTrigger>
                     <MultiDataTrigger>
                         <MultiDataTrigger.Conditions>
-                            <Condition Binding="{Binding Figure.Type}" Value="{x:Static figures:ChessFigureType.Rook}"/>
+                            <Condition Binding="{Binding Figure.Type}" Value="{x:Static figures:FigureType.Rook}"/>
                             <Condition Binding="{Binding Figure.Color}" Value="{x:Static figures:FigureColor.Black}"/>
                         </MultiDataTrigger.Conditions>
                         <Setter Property="Background">
@@ -794,7 +794,7 @@
                     </MultiDataTrigger>
                     <MultiDataTrigger>
                         <MultiDataTrigger.Conditions>
-                            <Condition Binding="{Binding Figure.Type}" Value="{x:Static figures:ChessFigureType.Knight}"/>
+                            <Condition Binding="{Binding Figure.Type}" Value="{x:Static figures:FigureType.Knight}"/>
                             <Condition Binding="{Binding Figure.Color}" Value="{x:Static figures:FigureColor.Black}"/>
                         </MultiDataTrigger.Conditions>
                         <Setter Property="Background">
@@ -805,7 +805,7 @@
                     </MultiDataTrigger>
                     <MultiDataTrigger>
                         <MultiDataTrigger.Conditions>
-                            <Condition Binding="{Binding Figure.Type}" Value="{x:Static figures:ChessFigureType.Bishop}"/>
+                            <Condition Binding="{Binding Figure.Type}" Value="{x:Static figures:FigureType.Bishop}"/>
                             <Condition Binding="{Binding Figure.Color}" Value="{x:Static figures:FigureColor.Black}"/>
                         </MultiDataTrigger.Conditions>
                         <Setter Property="Background">
@@ -816,7 +816,7 @@
                     </MultiDataTrigger>
                     <MultiDataTrigger>
                         <MultiDataTrigger.Conditions>
-                            <Condition Binding="{Binding Figure.Type}" Value="{x:Static figures:ChessFigureType.Queen}"/>
+                            <Condition Binding="{Binding Figure.Type}" Value="{x:Static figures:FigureType.Queen}"/>
                             <Condition Binding="{Binding Figure.Color}" Value="{x:Static figures:FigureColor.Black}"/>
                         </MultiDataTrigger.Conditions>
                         <Setter Property="Background">
@@ -827,7 +827,7 @@
                     </MultiDataTrigger>
                     <MultiDataTrigger>
                         <MultiDataTrigger.Conditions>
-                            <Condition Binding="{Binding Figure.Type}" Value="{x:Static figures:ChessFigureType.King}"/>
+                            <Condition Binding="{Binding Figure.Type}" Value="{x:Static figures:FigureType.King}"/>
                             <Condition Binding="{Binding Figure.Color}" Value="{x:Static figures:FigureColor.Black}"/>
                         </MultiDataTrigger.Conditions>
                         <Setter Property="Background">

@@ -1,14 +1,14 @@
 ﻿using System;
-using Moves.Engine.Figures;
 using System.Collections.ObjectModel;
+using Moves.Engine;
 
 namespace Moves.Game.ViewModels
 {
     public class FigureSelectedEventArgs : EventArgs
     {
-        public ChessFigureType? Figure { get; }
+        public FigureType? Figure { get; }
 
-        public FigureSelectedEventArgs(ChessFigureType? figure)
+        public FigureSelectedEventArgs(FigureType? figure)
         {
             Figure = figure;
         }
@@ -20,10 +20,10 @@ namespace Moves.Game.ViewModels
 
         FigureColor Color { get; set; }
 
-        ObservableCollection<ChessFigureType> Figures { get; }
+        ObservableCollection<FigureType> Figures { get; }
 
         event EventHandler<FigureSelectedEventArgs> FigureSelected;
 
-        ChessFigureType? SelectedFigure { get; set; }
+        FigureType? SelectedFigure { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows.Data;
-using Moves.Engine.Figures;
+using Moves.Engine;
 
 namespace Moves.Game.Views.Converters
 {
@@ -9,11 +9,11 @@ namespace Moves.Game.Views.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var isChessFigure = value is ChessFigureType;
+            var isChessFigure = value is FigureType;
             if (!isChessFigure)
                 return Binding.DoNothing;
 
-            var chessFigure = (ChessFigureType)value;
+            var chessFigure = (FigureType)value;
             return chessFigure.Localize();
         }
 
@@ -25,26 +25,26 @@ namespace Moves.Game.Views.Converters
 
     public static class ChessFigureTypeExtensions
     {
-        public static string Localize(this ChessFigureType chessFigure)
+        public static string Localize(this FigureType figure)
         {
-            switch (chessFigure)
+            switch (figure)
             {
-                case ChessFigureType.Pawn:
+                case FigureType.Pawn:
                     return "Пешка";
 
-                case ChessFigureType.Rook:
+                case FigureType.Rook:
                     return "Ладья";
 
-                case ChessFigureType.Knight:
+                case FigureType.Knight:
                     return "Конь";
 
-                case ChessFigureType.Bishop:
+                case FigureType.Bishop:
                     return "Слон";
 
-                case ChessFigureType.Queen:
+                case FigureType.Queen:
                     return "Ферзь";
 
-                case ChessFigureType.King:
+                case FigureType.King:
                     return "Король";
 
                 default:

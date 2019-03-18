@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
-using Moves.Engine.Figures;
+using Moves.Engine;
 using Moves.Game.ViewModels.Board;
 
 namespace Moves.Game.Views.Controls
@@ -46,7 +46,6 @@ namespace Moves.Game.Views.Controls
                 cell.State = CellState.Red;
                 return;
             }
-            
 
             var position = new Position(cell.Column, cell.Row);
             var hitTest =_boardViewModel?.PerformHitTest(position.ToString());

@@ -1,6 +1,4 @@
-﻿using Moves.Engine.Figures;
-
-namespace Moves.Engine.Board
+﻿namespace Moves.Engine
 {
     public class BoardHitTestResult
     {

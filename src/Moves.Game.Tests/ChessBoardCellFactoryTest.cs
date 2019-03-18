@@ -1,4 +1,4 @@
-﻿using Moves.Engine.Figures;
+﻿using Moves.Engine;
 using Moves.Game.ViewModels.Board;
 using NUnit.Framework;
 

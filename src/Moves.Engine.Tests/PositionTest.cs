@@ -1,5 +1,4 @@
-﻿using Moves.Engine.Figures;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Moves.Engine.Tests
 {

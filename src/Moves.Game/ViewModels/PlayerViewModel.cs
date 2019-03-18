@@ -1,6 +1,6 @@
 ﻿using System;
-using Moves.Engine.Figures;
 using System.Collections.ObjectModel;
+using Moves.Engine;
 
 namespace Moves.Game.ViewModels
 {
@@ -8,20 +8,20 @@ namespace Moves.Game.ViewModels
     {
         private string _nick;
 
-        private ChessFigureType? _selectedFigure;
+        private FigureType? _selectedFigure;
 
         public PlayerViewModel()
         {
-            Figures = new ObservableCollection<ChessFigureType>();
+            Figures = new ObservableCollection<FigureType>();
         }
 
         public FigureColor Color { get; set; }
 
-        public ObservableCollection<ChessFigureType> Figures { get; private set; }
+        public ObservableCollection<FigureType> Figures { get; private set; }
 
         public event EventHandler<FigureSelectedEventArgs> FigureSelected;
 
-        public ChessFigureType? SelectedFigure
+        public FigureType? SelectedFigure
         {
             get { return _selectedFigure; }
             set

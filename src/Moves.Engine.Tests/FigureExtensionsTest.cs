@@ -1,5 +1,4 @@
-﻿using Moves.Engine.Figures;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Moves.Engine.Tests
 {
@@ -9,20 +8,19 @@ namespace Moves.Engine.Tests
         /// <summary>
         /// Должен создать фигуру по заданному типу и заданной позиции
         /// </summary>
-        [TestCase(ChessFigureType.Pawn, "A2", "PA2")]
-        [TestCase(ChessFigureType.Rook, "A1", "RA1")]
-        [TestCase(ChessFigureType.Knight, "A2", "NA2")]
-        [TestCase(ChessFigureType.Bishop, "C1", "BC1")]
-        [TestCase(ChessFigureType.King, "E1", "KE1")]
-        [TestCase(ChessFigureType.Queen, "D1", "QD1")]
-        public void ShouldCreateFigureByTypeAndPosition(ChessFigureType figureType, string position, string expectedFigureStr)
+        [TestCase(FigureType.Pawn, "a2", "Pa2")]
+        [TestCase(FigureType.Rook, "a1", "Ra1")]
+        [TestCase(FigureType.Knight, "a2", "Na2")]
+        [TestCase(FigureType.Bishop, "c1", "Bc1")]
+        [TestCase(FigureType.King, "e1", "Ke1")]
+        [TestCase(FigureType.Queen, "d1", "Qd1")]
+        public void ShouldCreateFigureByTypeAndPosition(FigureType figureType, string position, string expectedFigureStr)
         {
             // Given
             var expectedFigure = expectedFigureStr.ToFigure(FigureColor.White);
 
             // When
-            var actualFigure = figureType.CreateFigure(position);
-            actualFigure.Color = FigureColor.White;
+            var actualFigure = figureType.CreateFigure(FigureColor.White, position);
 
             // Then
             Assert.AreEqual(expectedFigure, actualFigure);

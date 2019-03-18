@@ -1,5 +1,4 @@
-﻿using Moves.Engine.Board;
-using Moves.Engine.Figures;
+﻿using Moves.Engine;
 
 namespace Moves.Game.ViewModels.Board
 {
@@ -9,7 +8,7 @@ namespace Moves.Game.ViewModels.Board
 
         FigureColor CurrentColor { get; set; }
 
-        ChessFigureType? AddingFigure { get; set; }
+        FigureType? AddingFigure { get; set; }
 
         BoardHitTestResult PerformHitTest(string positionStr);
 

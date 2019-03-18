@@ -1,10 +1,9 @@
 ﻿using Moq;
-using Moves.Engine.Figures;
 using Moves.Game.ViewModels;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using Moves.Engine;
 
 namespace Moves.Game.Tests
 {
@@ -34,7 +33,7 @@ namespace Moves.Game.Tests
         public void ShouldInitializeWithAllFiguresSet()
         {
             // Given
-            var expectedChessFigures = Enum.GetValues(typeof(ChessFigureType)).Cast<ChessFigureType>().ToArray();
+            var expectedChessFigures = Enum.GetValues(typeof(FigureType)).Cast<FigureType>().ToArray();
 
             // When
             var newGameViewModel = new NewGameViewModel(_playerViewModelFactory);
@@ -48,26 +47,26 @@ namespace Moves.Game.Tests
         /// <summary>
         /// Должен дать фигуру 1 и 2 игроку
         /// </summary>
-        [TestCase(ChessFigureType.Pawn)]
-        [TestCase(ChessFigureType.Rook)]
-        [TestCase(ChessFigureType.Knight)]
-        [TestCase(ChessFigureType.Bishop)]
-        [TestCase(ChessFigureType.Queen)]
-        [TestCase(ChessFigureType.King)]
-        public void ShouldGiveFigureTo1Player(ChessFigureType expectedChessFigure)
+        [TestCase(FigureType.Pawn)]
+        [TestCase(FigureType.Rook)]
+        [TestCase(FigureType.Knight)]
+        [TestCase(FigureType.Bishop)]
+        [TestCase(FigureType.Queen)]
+        [TestCase(FigureType.King)]
+        public void ShouldGiveFigureTo1Player(FigureType expectedFigure)
         {
             // Given
             var newGameViewModel = new NewGameViewModel(_playerViewModelFactory);
             newGameViewModel.Initialize();
-            newGameViewModel.SelectedFigure = expectedChessFigure;
+            newGameViewModel.SelectedFigure = expectedFigure;
 
             // When
             newGameViewModel.GiveFigureToPlayer1Command.Execute();
             newGameViewModel.GiveFigureToPlayer2Command.Execute();
 
             // Then
-            Assert.IsTrue(newGameViewModel.Player1.Figures.Last() == expectedChessFigure);
-            Assert.IsTrue(newGameViewModel.Player2.Figures.Last() == expectedChessFigure);
+            Assert.IsTrue(newGameViewModel.Player1.Figures.Last() == expectedFigure);
+            Assert.IsTrue(newGameViewModel.Player2.Figures.Last() == expectedFigure);
         }
 
 
@@ -86,22 +85,22 @@ namespace Moves.Game.Tests
 
             var expectedFigureSet = new[]
             {
-                ChessFigureType.Pawn,
-                ChessFigureType.Pawn,
-                ChessFigureType.Pawn,
-                ChessFigureType.Pawn,
-                ChessFigureType.Pawn,
-                ChessFigureType.Pawn,
-                ChessFigureType.Pawn,
-                ChessFigureType.Pawn,
-                ChessFigureType.Rook,
-                ChessFigureType.Rook,
-                ChessFigureType.Knight,
-                ChessFigureType.Knight,
-                ChessFigureType.Bishop,
-                ChessFigureType.Bishop,
-                ChessFigureType.King,
-                ChessFigureType.Queen
+                FigureType.Pawn,
+                FigureType.Pawn,
+                FigureType.Pawn,
+                FigureType.Pawn,
+                FigureType.Pawn,
+                FigureType.Pawn,
+                FigureType.Pawn,
+                FigureType.Pawn,
+                FigureType.Rook,
+                FigureType.Rook,
+                FigureType.Knight,
+                FigureType.Knight,
+                FigureType.Bishop,
+                FigureType.Bishop,
+                FigureType.King,
+                FigureType.Queen
             };
 
             // Then

@@ -6,6 +6,15 @@
              Startup="App_OnStartup">
     <Application.Resources>
         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Views/StkCommon/ButtonDictionary.xaml"/>
+                <ResourceDictionary Source="Views/StkCommon/ComboBoxDictionary.xaml"/>
+                <ResourceDictionary Source="Views/StkCommon/ListBoxDictionary.xaml"/>
+                <ResourceDictionary Source="Views/StkCommon/ScrollBarDictionary.xaml"/>
+                <ResourceDictionary Source="Views/StkCommon/TextBlockDictionary.xaml"/>
+                <ResourceDictionary Source="Views/StkCommon/TextBoxDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
             <converters:ChessFigureToStringConverter x:Key="ChessFigureToStringConverter"/>
 
             <SolidColorBrush x:Key="BlackCellBrush" Color="#B58863" />
@@ -14,8 +23,25 @@
 
             <DataTemplate x:Key="ChessFigureStringTemlate" DataType="{x:Type figures:IFigure}">
                 <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=Self}, Path=DataContext, Converter={StaticResource ChessFigureToStringConverter} }"
-                           Margin="3"/>
+                           Margin="3,0,0,0"/>
             </DataTemplate>
+            
+            <Style TargetType="{x:Type Button}" BasedOn="{StaticResource StlnButtonStyle}"/>
+            <Style TargetType="{x:Type ListBox}" BasedOn="{StaticResource StlnListBoxStyle}"/>
+            <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource StlnListBoxItemStyle}"/>
+
+            <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StlnComboBoxStyle}"/>
+            <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource StlnComboBoxItemStyle}"/>
+
+            <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource StlnTextBoxStyle}"/>
+
+            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TooltipTextBlock}">
+                <Style.Triggers>
+                    <Trigger Property="IsEnabled" Value="False">
+                        <Setter Property="Opacity" Value="0.6"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

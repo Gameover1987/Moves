@@ -13,5 +13,7 @@ namespace Moves.Game.ViewModels.Board
         BoardHitTestResult PerformHitTest(string positionStr);
 
         void SetFigure(IFigure figure);
+
+        void Reset();
     }
 }

@@ -89,11 +89,11 @@
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding State}" Value="{x:Static board:CellState.Red}">
                                         <Setter Property="BorderBrush" Value="Red"/>
-                                        <Setter Property="BorderThickness" Value="0"/>
+                                        <Setter Property="BorderThickness" Value="5"/>
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding State}" Value="{x:Static board:CellState.Green}">
                                         <Setter Property="BorderBrush" Value="ForestGreen"/>
-                                        <Setter Property="BorderThickness" Value="0"/>
+                                        <Setter Property="BorderThickness" Value="5"/>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>

@@ -83,6 +83,11 @@ namespace Moves.Engine
             }
         }
 
+        public void Clear()
+        {
+            _figures.Clear();
+        }
+
         public IFigure GetFigureByPosition(string positionStr)
         {
             return _figures.FirstOrDefault(x => x.Position.PositionStr == positionStr);

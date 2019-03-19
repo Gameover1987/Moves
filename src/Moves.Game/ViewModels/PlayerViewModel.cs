@@ -7,6 +7,7 @@ namespace Moves.Game.ViewModels
     public sealed class PlayerViewModel : ViewModelBase, IPlayerViewModel
     {
         private string _nick;
+        private bool _isActive;
 
         private FigureType? _selectedFigure;
 
@@ -16,6 +17,18 @@ namespace Moves.Game.ViewModels
         }
 
         public FigureColor Color { get; set; }
+
+        public bool IsActive
+        {
+            get { return _isActive; }
+            set
+            {
+                if (_isActive == value)
+                    return;
+                _isActive = value;
+                OnPropertyChanged(() => IsActive);
+            }
+        }
 
         public ObservableCollection<FigureType> Figures { get; private set; }
 
@@ -31,16 +44,20 @@ namespace Moves.Game.ViewModels
                 _selectedFigure = value;
                 OnPropertyChanged(() => SelectedFigure);
 
-                if (SelectedFigure != null)
-                    FigureSelected?.Invoke(this, new FigureSelectedEventArgs(SelectedFigure));
+                FigureSelected?.Invoke(this, new FigureSelectedEventArgs(SelectedFigure));
             }
         }
 
         public string Nick
         {
-            get => _nick; set
+            get { return _nick; }
+            set
             {
-                SetProperty(() => _nick, value);
+                if (_nick == value)
+                    return;
+
+                _nick = value;
+                OnPropertyChanged(() => Nick);
             }
         }
     }

@@ -1,4 +1,7 @@
 ﻿using System.Windows.Controls;
+using System.Windows.Input;
+using Moves.Engine;
+using Moves.Game.ViewModels;
 
 namespace Moves.Game.Views.Controls
 {
@@ -10,6 +13,15 @@ namespace Moves.Game.Views.Controls
         public PlayerControl()
         {
             InitializeComponent();
+        }
+
+        private void EventSetter_OnHandler(object sender, MouseButtonEventArgs e)
+        {
+            var listBoxItem = sender as ListBoxItem;
+
+            var playerViewModel = DataContext as IPlayerViewModel;
+            playerViewModel.SelectedFigure = (FigureType)listBoxItem.DataContext;
+
         }
     }
 }

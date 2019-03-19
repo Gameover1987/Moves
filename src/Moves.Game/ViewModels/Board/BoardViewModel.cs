@@ -67,6 +67,18 @@ namespace Moves.Game.ViewModels.Board
             _board.AddFigure(figure);
         }
 
+        public void Reset()
+        {
+            AddingFigure = null;
+            CurrentColor = FigureColor.White;
+            foreach (var cell in Cells)
+            {
+                cell.Figure = null;
+                cell.State = CellState.Green;
+            }
+            _board.Clear();
+        }
+
         private static void SetFigures(List<IChessBoardCellViewModel> cells)
         {
             var firstRow = cells.Where(x => x.Row == 1).ToArray();

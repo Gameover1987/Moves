@@ -12,6 +12,7 @@ namespace Moves.Game.ViewModels
 
         private IPlayerViewModel _player1;
         private IPlayerViewModel _player2;
+        private IPlayerViewModel _activePlayer;
 
         private readonly IBoardViewModel _board;
 
@@ -22,13 +23,13 @@ namespace Moves.Game.ViewModels
 
             NewGameCommand = new NotifyCommand(NewGameCommandHandler);
 
-            var newGame = new NewGameViewModel(new PlayerViewModelFactory());
-            newGame.Initialize();
-            newGame.GiveDefaultFigureSetCommand.Execute();
-            Player1 = newGame.Player1;
-            Player2 = newGame.Player2;
+            //var newGame = new NewGameViewModel(new PlayerViewModelFactory());
+            //newGame.Initialize();
+            //newGame.GiveDefaultFigureSetCommand.Execute();
+            //Player1 = newGame.Player1;
+            //Player2 = newGame.Player2;
 
-            ActivePlayer = Player1;
+            // ActivePlayer = Player1;
         }
 
         public IPlayerViewModel Player1
@@ -76,7 +77,7 @@ namespace Moves.Game.ViewModels
                 if (Player1.SelectedFigure == null &&
                     Player2.SelectedFigure == null)
                     return string.Format("Ходит {0}", ActivePlayer.Nick);
-                
+
                 if (ActivePlayer.SelectedFigure != null)
                 {
                     return string.Format("Ходит {0}, выбрана '{1}'", ActivePlayer.Nick, ActivePlayer.SelectedFigure.Value.Localize());
@@ -105,7 +106,20 @@ namespace Moves.Game.ViewModels
             get { return _board; }
         }
 
-        public IPlayerViewModel ActivePlayer { get; private set; }
+        public IPlayerViewModel ActivePlayer
+        {
+            get { return _activePlayer; }
+            private set
+            {
+                if (_activePlayer == value)
+                    return;
+                _activePlayer = value;
+                OnPropertyChanged(() => ActivePlayer);
+
+                Player1.IsActive = ActivePlayer == Player1;
+                Player2.IsActive = ActivePlayer == Player2;
+            }
+        }
 
         public INotifyCommand NewGameCommand { get; private set; }
 
@@ -117,19 +131,16 @@ namespace Moves.Game.ViewModels
 
             Player1 = newGameViewModel.Player1;
             Player2 = newGameViewModel.Player2;
+            ActivePlayer = Player1;
+
+            Board.Reset();
+
+            OnPropertyChanged(() => GameInfo);
         }
 
         private void PlayerOnFigureSelected(object sender, FigureSelectedEventArgs e)
         {
             var player = (IPlayerViewModel)sender;
-            if (player == Player1)
-            {
-                Player2.SelectedFigure = null;
-            }
-            else if (player == Player2)
-            {
-                Player1.SelectedFigure = null;
-            }
 
             Board.AddingFigure = player.SelectedFigure;
             Board.CurrentColor = player.Color;

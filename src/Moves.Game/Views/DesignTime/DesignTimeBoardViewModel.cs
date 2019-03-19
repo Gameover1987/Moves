@@ -74,5 +74,10 @@ namespace Moves.Game.Views.DesignTime
         {
             throw new System.NotImplementedException();
         }
+
+        public void Reset()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

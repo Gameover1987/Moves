@@ -20,6 +20,8 @@ namespace Moves.Game.ViewModels
 
         FigureColor Color { get; set; }
 
+        bool IsActive { get; set; }
+
         ObservableCollection<FigureType> Figures { get; }
 
         event EventHandler<FigureSelectedEventArgs> FigureSelected;

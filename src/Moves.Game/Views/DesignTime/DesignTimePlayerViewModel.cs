@@ -14,6 +14,7 @@ namespace Moves.Game.Views.DesignTime
 
         public string Nick { get; set; }
         public FigureColor Color { get; set; }
+        public bool IsActive { get; set; }
 
         public ObservableCollection<FigureType> Figures { get; private set; }
         public event EventHandler<FigureSelectedEventArgs> FigureSelected;

@@ -15,5 +15,7 @@ namespace Moves.Engine
         BoardHitTestResult HitTest(IFigure figure);
 
         Position[] GetMoves(IFigure figure);
+
+        void Clear();
     }
 }
